@@ -6,7 +6,7 @@ Item {
 
     width: units.gu(20)
     height: units.gu(3.5)
-    z: opened ? 100 : 0
+    z: 1
 
     property bool opened
 
