@@ -7,5 +7,5 @@ Object {
     property color highlightDisabled: disabled
     property color foreground: "#34495e"                 // Midnight blue
     property color disabled: "#bdc3c7"                  // Silver
-    property color fill: Qt.rgba(1,1,1,0.7)
+    property color fill: Qt.rgba(1,1,1,0.9)
 }

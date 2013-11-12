@@ -9,8 +9,9 @@ Item {
     z: opened ? 100 : 0
 
     property bool opened
+
     property alias model: repeater.model
-    property int selectedIndex: 1
+    property int selectedIndex: 0
 
     Rectangle {
         radius: units.gu(1)
@@ -60,7 +61,7 @@ Item {
                         anchors {
                             verticalCenter: parent.verticalCenter
                             right: parent.right
-                            rightMargin: units.gu(0.8)
+                            rightMargin: units.gu(0.7)
                         }
                     }
 
@@ -92,11 +93,7 @@ Item {
                             }
 
                             right: parent.right
-                            rightMargin: showCheck ? units.gu(1.6) : units.gu(1.6)
-
-                            Behavior on rightMargin {
-                                NumberAnimation { duration: 200 }
-                            }
+                            rightMargin: units.gu(1.5)
                         }
                     }
                 }
