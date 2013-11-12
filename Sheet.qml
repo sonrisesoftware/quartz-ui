@@ -3,7 +3,7 @@ import QtQuick 2.0
 Widget {
     id: sheet
     width: units.gu(40)
-    height: units.gu(25)
+    height: units.gu(30)
 
     radius: units.gu(27/16)
     color: Qt.rgba(1,1,1,0.7)

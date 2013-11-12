@@ -12,7 +12,7 @@ Rectangle {
     radius: units.gu(1)
 
     border.color: theme.foreground
-    color: Qt.rgba(1,1,1,0.7)
+    color: theme.fill
 
 
     property alias text: edit.text
