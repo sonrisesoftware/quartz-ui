@@ -15,6 +15,7 @@ Widget {
     default property alias data: contents.data
 
     opacity: opened ? 1 : 0
+    visible: opacity > 0
 
     Behavior on opacity {
         NumberAnimation { duration: 200 }
@@ -22,11 +23,13 @@ Widget {
 
     function open() {
         opened = true
+        currentSheet = sheet
         sheetOpen = true
     }
 
     function close() {
         opened = false
+        currentSheet = null
         sheetOpen = false
     }
 

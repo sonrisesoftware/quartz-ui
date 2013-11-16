@@ -25,10 +25,8 @@ AbstractButton {
 
     color: fillColor
 
-    Rectangle {
+    Divider {
         id: divider
-        height: 1
-        color: "gray"
 
         anchors {
             bottom: parent.bottom

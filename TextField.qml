@@ -6,7 +6,7 @@ Rectangle {
 
     signal triggered
 
-    height: placeholderLabel.height + units.gu(1)
+    height: units.gu(3.5)
     width: units.gu(20)
 
     radius: units.gu(1)
@@ -30,6 +30,7 @@ Rectangle {
             left: parent.left
             leftMargin: units.gu(1)
             verticalCenter: parent.verticalCenter
+            verticalCenterOffset: units.gu(0.1)
         }
     }
 
@@ -40,12 +41,13 @@ Rectangle {
 
         anchors {
             verticalCenter: parent.verticalCenter
+            verticalCenterOffset: units.gu(0.3)
             left: parent.left
             right: parent.right
             margins: units.gu(1)
         }
 
-        selectionColor: Qt.rgba(0.3,0.3,0.8,1)
+        selectionColor: theme.highlight//Qt.rgba(0.3,0.3,0.8,1)
 
         onAccepted: triggered()
     }

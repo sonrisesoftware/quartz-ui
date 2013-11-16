@@ -14,6 +14,10 @@ Item {
         }
 
         function fontSize(size) {
+            if (size === "xx-large")
+                return gu(4)
+            if (size === "x-large")
+                return gu(2.5)
             if (size === "large")
                 return gu(2)
             if (size === "medium")
@@ -32,6 +36,7 @@ Item {
     }
 
     property bool sheetOpen: false
+    property Sheet currentSheet
 
     Rectangle {
         anchors.fill: parent
@@ -49,6 +54,12 @@ Item {
         MouseArea {
             anchors.fill: parent
             hoverEnabled: true
+
+            onClicked: currentSheet.close()
         }
+    }
+
+    function getIcon(name) {
+        return Qt.resolvedUrl("/Users/mspencer/Downloads/ubuntu-themes-13.04+13.10.20131014/ubuntu-mobile/actions/scalable/" + name + ".svg")
     }
 }

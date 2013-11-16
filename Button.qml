@@ -4,7 +4,7 @@ AbstractButton {
     id: button
 
     width: label.width + units.gu(4)
-    height: label.height + units.gu(1)
+    height: units.gu(3.5)//label.height + units.gu(1)
 
     radius: height/2
     property alias text: label.text

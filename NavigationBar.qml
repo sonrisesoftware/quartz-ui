@@ -8,14 +8,14 @@ Rectangle {
     }
 
     color: Qt.rgba(0.9,0.9,0.9,0.8)
-    height: units.gu(4.5)//titleLabel.height + units.gu(1)
+    height: units.gu(5)//titleLabel.height + units.gu(1)
 
     property alias title: titleLabel.text
 
     Label {
         id: titleLabel
 
-        fontSize: "large"
+        fontSize: "x-large"
         anchors.centerIn: parent
     }
 
