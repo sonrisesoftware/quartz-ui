@@ -1,25 +1,33 @@
 import QtQuick 2.0
 import "ListItems" as ListItem
 
-Rectangle {
+Widget {
     id: textField
 
     signal triggered
 
-    height: units.gu(3.5)
+    height: units.gu(3.4) //placeholderLabel.height + units.gu(1)
     width: units.gu(20)
 
     radius: units.gu(1)
 
-    border.color: theme.foreground
-    color: theme.fill
+    border.color: mouseOver || !hiddenEditing || edit.cursorVisible ? theme.foreground : "transparent"
+    color: mouseOver || !hiddenEditing || edit.cursorVisible ? theme.fill : Qt.rgba(1,1,1,0)
 
+    Behavior on border.color {
+        ColorAnimation { duration: 200 }
+    }
+
+    Behavior on color {
+        ColorAnimation { duration: 200 }
+    }
 
     property alias text: edit.text
     property alias font: edit.font
     property alias placeholderText: placeholderLabel.text
     property alias validator: edit.validator
     property alias acceptableInput: edit.acceptableInput
+    property bool hiddenEditing: false
 
     Label {
         id: placeholderLabel

@@ -17,7 +17,7 @@ Item {
             if (size === "xx-large")
                 return gu(4)
             if (size === "x-large")
-                return gu(2.5)
+                return gu(2.4)
             if (size === "large")
                 return gu(2)
             if (size === "medium")
@@ -59,7 +59,15 @@ Item {
         }
     }
 
+    property ToolTip appToolTip: appToolTip
+
+    ToolTip {
+        id: appToolTip
+        z: 3
+        //anchors.centerIn: parent
+    }
+
     function getIcon(name) {
-        return Qt.resolvedUrl("/Users/mspencer/Downloads/ubuntu-themes-13.04+13.10.20131014/ubuntu-mobile/actions/scalable/" + name + ".svg")
+        return Qt.resolvedUrl("/Users/mspencer/Developer/ubuntu-themes/ubuntu-mobile/actions/scalable/" + name + ".svg")
     }
 }

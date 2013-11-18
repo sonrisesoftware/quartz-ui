@@ -3,8 +3,8 @@ import QtQuick 2.0
 AbstractButton {
     id: button
 
-    width: units.gu(3.5)
-    height: width
+    width: height
+    height: units.gu(3.4)
 
     radius: height/2
     property alias iconSource: image.source

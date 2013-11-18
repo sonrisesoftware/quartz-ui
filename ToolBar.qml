@@ -8,7 +8,7 @@ Rectangle {
     }
 
     color: Qt.rgba(0.95,0.95,0.95,0.8)
-    height: units.gu(5)
+    height: units.gu(4.5)
 
     Rectangle {
         height: 1
