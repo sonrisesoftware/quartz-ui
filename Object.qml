@@ -1,6 +1,7 @@
 import QtQuick 2.0
 
 QtObject {
-//    default property alias data: children
-//    property list<QtObject> children;
+    id: object
+    default property alias children: object.__childrenFix
+    property list<QtObject> __childrenFix: [QtObject {}]
 }

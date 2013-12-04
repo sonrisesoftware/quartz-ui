@@ -35,7 +35,7 @@ Rectangle {
             text = widget.toolTip
             currentWidget = widget
             open = 1
-            print("Showing...")
+            //print("Showing...")
             var position = widget.mapToItem(toolTip.parent, x, y)
             toolTip.x = position.x
             toolTip.y = position.y
@@ -43,7 +43,7 @@ Rectangle {
     }
 
     function close(widget) {
-        print("Hiding...")
+        //print("Hiding...")
         open = 0
     }
 }

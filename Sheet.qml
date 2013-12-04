@@ -9,6 +9,17 @@ Widget {
     color: Qt.rgba(1,1,1,0.7)
     z: 2
 
+    anchors {
+        top: parent.top
+        topMargin: opened ? -radius : -height
+
+        Behavior on topMargin {
+            NumberAnimation { duration: 200 }
+        }
+
+        horizontalCenter: parent.horizontalCenter
+    }
+
     property bool opened: false
     property alias title: titleLabel.text
 
@@ -35,12 +46,18 @@ Widget {
 
     Item {
         id: titleBar
+        anchors {
+            top: parent.top
+            topMargin: radius
+            left: parent.left
+            right: parent.right
+        }
+
         height: titleLabel.height + units.gu(1)
-        width: parent.width
         clip: true
 
         Rectangle {
-            radius: sheet.radius
+            //radius: sheet.radius
             color: Qt.rgba(0.9,0.9,0.9,0.8)
             width: parent.width
             height: titleLabel.height + units.gu(3)

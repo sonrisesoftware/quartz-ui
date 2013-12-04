@@ -14,6 +14,7 @@ Item {
     property int selectedIndex: 0
 
     Rectangle {
+        id: shape
         radius: units.gu(1)
 
         border.color: dropDown.mouseOver ? theme.highlight : theme.foreground
@@ -47,7 +48,7 @@ Item {
                     showDivider: dropDown.opened && index < repeater.count - 1
                     onClicked: {
                         selectedIndex = index
-                        dropDown.opened = !dropDown.opened
+                        dropDown.opened = false
                     }
 
                     Rectangle {
@@ -146,5 +147,32 @@ Item {
 //                rightMargin: units.gu(1.6)
 //            }
 //        }
+    }
+
+    Rectangle {
+        anchors.fill: shape
+
+        //border.color: shape.border.color
+        color: mouseArea.pressed ? Qt.rgba(0,0,1,0.3) : mouseArea.containsMouse ? Qt.rgba(0,0,1,0.1) : Qt.rgba(0,0,1,0)
+        opacity: opened ? 0 : 1
+        radius: units.gu(1)
+
+        Behavior on opacity {
+            NumberAnimation { duration: 200; }
+        }
+
+        Behavior on color {
+            ColorAnimation { duration: 200 }
+        }
+    }
+
+    MouseArea {
+        id: mouseArea
+        anchors.fill: parent
+        enabled: !opened
+        visible: !opened
+        hoverEnabled: true
+
+        onClicked: opened = true
     }
 }
