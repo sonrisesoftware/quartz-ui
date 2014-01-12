@@ -1,21 +1,62 @@
+/*
+ * QML Air - A lightweight and mostly flat UI widget collection for QML
+ * Copyright (C) 2014 Michael Spencer
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 import QtQuick 2.0
+import QtGraphicalEffects 1.0
 
-AbstractButton {
+Widget {
     id: button
 
-    width: label.width + units.gu(4)
-    height: units.gu(3.4)
+    property bool selected
 
-    radius: height/2
+    type: "button"
+
+    width: Math.max(styleObject.minWidth, label.width + 2 * styleObject.horizPadding)
+    height: styleObject.hasOwnProperty("height") && styleObject.height !== "auto" ? styleObject.height : label.height + styleObject.vertPadding
+
+    radius: styleObject.radius
     property alias text: label.text
 
-    border.color: mainColor
-    color: fillColor
+    border.color: styleObject.border
+    color: selected || mouseOver ? styleObject.background_mouseOver : styleObject.background
+
+    Behavior on border.color {
+        ColorAnimation { duration: 200 }
+    }
+
+    Behavior on color {
+        ColorAnimation { duration: 200 }
+    }
+
+    opacity: enabled ? 1 : 0.5
+
+    Behavior on opacity {
+        NumberAnimation { duration: 200 }
+    }
 
     Label {
         id: label
-        anchors.centerIn: parent
-        color: mainColor
+        anchors {
+            centerIn: parent
+            verticalCenterOffset: pressed ? 1 : 0
+            horizontalCenterOffset: pressed ? 1 : 0
+        }
+        color: button.styleObject.textColor
+        fontSize: button.styleObject.fontSize
 
         Behavior on color {
             ColorAnimation { duration: 200 }

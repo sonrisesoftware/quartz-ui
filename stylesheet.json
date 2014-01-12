@@ -1,0 +1,150 @@
+{
+	"brand": {
+		"primary": "#428bca",
+		"success": "#5cb85c",
+		"warning": "#f0ad4e",
+		"danger": "#d9534f",
+		"info": "#5bc0de"
+	},
+	
+	"default": {
+		"fontSize": "14",
+		"textColor": "@foreground",
+		"background": "white",
+		"foreground": "#33333",
+		"border": "@foreground"
+	},
+	
+	"button": {
+		"default": {
+			"background": "#fff",
+			"border": "$darker @background 1.4",
+			"background_mouseOver": "$darker @background 1.1",
+			"radius": "0.5gu",
+			"horizPadding": "2gu",
+			"height": "4gu",
+			"minWidth": "10gu"
+		},
+		"#style": {
+			"background": "@brand.#style",
+			"border": "$darker @background 1.4",
+			"textColor": "white",
+			"background_mouseOver": "$darker @background 1.15"
+		}
+	},
+	
+	"icon": {
+		"default": {
+			"color": "@textColor",
+			"color_disabled": "gray"
+		},
+		
+		"#style": {
+			"color": "@brand.#style"
+		}
+	},
+	
+	"sheet": {
+		"default": {
+			"width": "45gu",
+			"height": "50gu",
+			"radius": "0.7gu",
+			"background": "white",
+			"border": "#e5e5e5",
+			"margins": "2gu",
+			"minHeight": "25gu",
+			"spacing": "1gu",
+			"header": {
+				"margins": "1.5gu",
+				"fontSize": "x-large",
+				"background": "white",
+				"snap": "center"
+			}, 
+			"footer": {
+				"margins": "1gu",
+				"snap": "right",
+				"spacing": "1gu",
+				"size": "default"
+			}
+		},
+		
+		"#style": {
+			"header": {
+				"textColor": "@brand.#style"
+			}
+		}
+	},
+	
+	"textfield": {
+		"default": {
+			"background": "#fafafa",
+			"border": "#ccc",
+			"border_focus": "#66afe9",
+			"textColor": "#333",
+			"placeholderColor": "lightgray",
+			"height": "4gu",
+			"width": "30gu",
+			"radius": "0.5gu"
+		},
+		"success": {
+			"textColor": "#468847",
+			"background": "#dff0d8",
+			"border": "$darker @background 1.2",
+			"border_focus": "$darker @background 1.4"
+		},
+		"danger": {
+			"textColor": "#b94a48",
+			"background": "#f2dede",
+			"border": "$darker @background 1.2",
+			"border_focus": "$darker @background 1.4"
+		},
+		"warning": {
+			"textColor": "#c09853",
+			"background": "#fcf8e3",
+			"border": "$darker @background 1.2",
+			"border_focus": "$darker @background 1.4"
+		},
+		"info": {
+			"textColor": "#3a87ad",
+			"background": "#d9edf7",
+			"border": "$darker @background 1.2",
+			"border_focus": "$darker @background 1.4"
+		}
+	},
+	
+	"navbar": {
+		"default": {
+			"height": "6gu",
+			"background": "#f8f8f8",
+			"border": "$darker @background 1.1",
+			"margins": "1gu",
+			"spacing": "1gu",
+			
+			"title": {
+				"fontSize": "x-large",
+				"textColor": "#777777"
+			}
+		}
+	},
+	
+	"radiobutton": {
+		"default": {
+			"background": "#ffffff",
+			"dot": "@brand.primary",
+			"border": "$darker @background 1.4",
+			"background_mouseOver": "$darker @background 1.1",
+			"margin": "0.75gu"
+		}
+	},
+	
+	"tooltip": {
+		"default": {
+			"background": "black",
+			"border": "black",
+			"textColor": "white",
+			"radius": "0.6gu",
+			"margins": "1gu",
+			"minWidth": "10gu"
+		}
+	}
+}

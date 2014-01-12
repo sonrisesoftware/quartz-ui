@@ -18,35 +18,34 @@
 import QtQuick 2.0
 
 Widget {
-    id: button
+    id: widget
+    property string name
 
-    width: height
+    type: "icon"
 
-    type: "button"
-    property bool hidden: false
+    property alias color: text.color
 
-    property alias color: image.color
+    width: text.width
+    height: text.height
 
-    height: styleObject.hasOwnProperty("height") && styleObject.height !== "auto" ? styleObject.height : image.height + styleObject.vertPadding
+    mouseEnabled: false
 
-    radius: styleObject.radius
-
-    border.color: hidden ? "transparent" : styleObject.border
-    color: hidden ? "transparent" : selected || mouseOver ? styleObject.background_mouseOver : styleObject.background
-
-    Behavior on border.color {
-        ColorAnimation { duration: 200 }
+    property var icons: {
+        "times": "",
+        "plus": ""
     }
 
-    Behavior on color {
-        ColorAnimation { duration: 200 }
-    }
-
-    property alias iconName: image.name
-
-    Icon {
-        id: image
-
+    Text {
+        id: text
         anchors.centerIn: parent
+
+        font.family: "FontAwesome"
+        font.weight: Font.Light
+        text: widget.icons[widget.name]
+        color: widget.enabled ? styleObject.color : styleObject.color_disabled
+
+        Behavior on color {
+            ColorAnimation { duration: 200 }
+        }
     }
 }
