@@ -25,11 +25,12 @@ Widget {
 
     type: "button"
 
-    width: Math.max(styleObject.minWidth, label.width + 2 * styleObject.horizPadding)
-    height: styleObject.hasOwnProperty("height") && styleObject.height !== "auto" ? styleObject.height : label.height + styleObject.vertPadding
+    width: text === "" ? height : Math.max(styleObject.minWidth, row.width + 2 * styleObject.horizPadding)
+    height: styleObject.hasOwnProperty("height") && styleObject.height !== "auto" ? styleObject.height : row.height + styleObject.vertPadding
 
     radius: styleObject.radius
     property alias text: label.text
+    property alias iconName: icon.name
 
     border.color: styleObject.border
     color: selected || mouseOver ? styleObject.background_mouseOver : styleObject.background
@@ -48,18 +49,32 @@ Widget {
         NumberAnimation { duration: 200 }
     }
 
-    Label {
-        id: label
+    Row {
+        id: row
         anchors {
             centerIn: parent
             verticalCenterOffset: pressed ? 1 : 0
             horizontalCenterOffset: pressed ? 1 : 0
         }
-        color: button.styleObject.textColor
-        fontSize: button.styleObject.fontSize
 
-        Behavior on color {
-            ColorAnimation { duration: 200 }
+        spacing: units.gu(1)
+
+        Icon {
+            id: icon
+            color: label.color
+            anchors.verticalCenter: parent.verticalCenter
+        }
+
+        Label {
+            id: label
+
+            color: button.styleObject.textColor
+            fontSize: button.styleObject.fontSize
+            anchors.verticalCenter: parent.verticalCenter
+
+            Behavior on color {
+                ColorAnimation { duration: 200 }
+            }
         }
     }
 }

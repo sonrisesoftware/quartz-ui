@@ -25,6 +25,8 @@ Widget {
 
     property alias color: text.color
 
+    color: "transparent"
+
     width: text.width
     height: text.height
 
@@ -32,7 +34,9 @@ Widget {
 
     property var icons: {
         "times": "",
-        "plus": ""
+        "plus": "",
+        "bell-o": "",
+        "bell": ""
     }
 
     Text {

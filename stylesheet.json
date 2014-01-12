@@ -116,7 +116,7 @@
 		"default": {
 			"height": "6gu",
 			"background": "#f8f8f8",
-			"border": "$darker @background 1.1",
+			"border": "$darker @background 1.2",
 			"margins": "1gu",
 			"spacing": "1gu",
 			
@@ -145,6 +145,15 @@
 			"radius": "0.6gu",
 			"margins": "1gu",
 			"minWidth": "10gu"
+		}
+	},
+	
+	"popover": {
+		"default": {
+			"background": "#fff",
+			"border": "$rgba 0 0 0 0.2",
+			"maxWidth": "35gu",
+			"radius": "0.6gu"
 		}
 	}
 }

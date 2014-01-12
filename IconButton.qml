@@ -32,7 +32,7 @@ Widget {
     radius: styleObject.radius
 
     border.color: hidden ? "transparent" : styleObject.border
-    color: hidden ? "transparent" : selected || mouseOver ? styleObject.background_mouseOver : styleObject.background
+    color: hidden ? "transparent" : (selected || mouseOver) ? styleObject.background_mouseOver : styleObject.background
 
     Behavior on border.color {
         ColorAnimation { duration: 200 }

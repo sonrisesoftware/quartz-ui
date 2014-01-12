@@ -55,9 +55,9 @@ Rectangle {
         return def
     }
 
-    color: "transparent"
+    //color: "transparent"
 
-    signal clicked
+    signal clicked(var caller)
 
     property alias mouseOver: mouseArea.containsMouse
     property alias pressed: mouseArea.pressed
@@ -88,7 +88,7 @@ Rectangle {
 
         onClicked: {
             widget.forceActiveFocus()
-            widget.clicked()
+            widget.clicked(widget)
         }
 
         onEntered: {

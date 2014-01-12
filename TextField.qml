@@ -30,6 +30,7 @@ Widget {
     width: styleObject.width
 
     property bool editing: edit.focus
+    color: "transparent"
 
     RectangularGlow {
         id: glowEffect

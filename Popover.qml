@@ -16,29 +16,93 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
+import QtGraphicalEffects 1.0
 
 Widget {
-    width: units.gu(20)
+    id: popover
+    width: styleObject.maxWidth
     height: childrenRect.height
 
-    radius: units.gu(0.5)
-    border.color: "gray"
+    type: "popover"
+
+    radius: styleObject.radius
+    border.color: Qt.rgba(0,0,0,0.2)//styleObject.border
     //color: "white"
-    color: Qt.rgba(0.95,0.95,0.95,0.8)
+    color: styleObject.background
 
     property bool opened: false
+    property int offset: 0
 
     opacity: opened ? 1 : 0
+    visible: opacity > 0
 
     Behavior on opacity {
         NumberAnimation { duration: 200 }
     }
 
-    function open() {
+    function toggle(widget) {
+        if (opened) {
+            close()
+        } else {
+            open(widget)
+        }
+    }
+
+    function open(widget) {
+        var position = widget.mapToItem(popover.parent, widget.width/2, widget.height + units.gu(1.5))
+        popover.x = position.x - popover.width/2
+        popover.y = position.y
+
+        if (popover.x < units.gu(1)) {
+            popover.offset = popover.x - units.gu(1)
+            popover.x = units.gu(1)
+        } else if (popover.x + popover.width > popover.parent.width - units.gu(1)) {
+            popover.offset = popover.x + popover.width - (popover.parent.width - units.gu(1))
+            popover.x = popover.parent.width - units.gu(1) - popover.width
+        } else {
+            popover.offset = 0
+        }
         opened = true
     }
 
     function close() {
         opened = false
+    }
+
+    RectangularGlow {
+        id: glowEffect
+
+        opacity: 0.3
+        anchors.fill: parent
+        glowRadius: units.gu(1)
+        //cornerRadius: 0
+        color: "black"
+    }
+
+    Rectangle {
+        border.color: parent.border.color
+        color: parent.color
+        width: units.gu(2)
+        height: width
+
+        rotation: 45
+
+        anchors {
+            horizontalCenter: parent.horizontalCenter
+            verticalCenter: parent.top
+            verticalCenterOffset: 1
+            horizontalCenterOffset: offset
+
+            Behavior on verticalCenterOffset {
+                NumberAnimation { duration: 200 }
+            }
+        }
+    }
+
+    Rectangle {
+        anchors.fill: parent
+        anchors.margins: 1
+        color: parent.color
+        radius: parent.radius
     }
 }

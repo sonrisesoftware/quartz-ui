@@ -29,10 +29,10 @@ Object {
             return Qt.darker(color, Number(percent))
         },
         "rgba": function(args) {
-            return Qt.rgba(parseFloat(args[0]),
-                           parseFloat(args[1]),
-                           parseFloat(args[2]),
-                           parseFloat(args[3]))
+            return Qt.rgba(Number(args[0]),
+                           Number(args[1]),
+                           Number(args[2]),
+                           Number(args[3]))
         }
     }
 
@@ -54,6 +54,8 @@ Object {
 
         if (subobj) {
             for (var key in subobj) {
+                if (subobj[key] === undefined)
+                    continue
                 if (typeof(newobj[key]) === "object" || typeof(subobj[key]) === "object") {
                     print("TYPE OBJECT, EXTENDING")
                     newobj[key] = extend(newobj[key], subobj[key])

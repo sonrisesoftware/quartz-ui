@@ -22,7 +22,18 @@ Widget {
     type: "navbar"
     height: styleObject.height
 
-    color: styleObject.background
+    //color: styleObject.background
+    gradient: Gradient {
+        GradientStop {
+            position: 0.0
+            color: styleObject.background
+        }
+
+        GradientStop {
+            position: 1.0
+            color: Qt.darker(styleObject.background, 1.1)
+        }
+    }
 
     property string title
 

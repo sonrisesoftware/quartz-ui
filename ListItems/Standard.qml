@@ -18,13 +18,15 @@
 import QtQuick 2.0
 import ".."
 
-AbstractButton {
+Widget {
     anchors {
         left: parent.left
         right: parent.right
     }
 
     height: units.gu(3)
+
+    property bool selected: false
 
     property alias text: label.text
 
