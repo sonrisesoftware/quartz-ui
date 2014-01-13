@@ -18,7 +18,7 @@
 import QtQuick 2.0
 import QtGraphicalEffects 1.0
 
-Widget {
+PopupBase {
     id: popover
     width: styleObject.maxWidth
     height: childrenRect.height
@@ -30,22 +30,14 @@ Widget {
     //color: "white"
     color: styleObject.background
 
-    property bool opened: false
     property int offset: 0
 
     opacity: opened ? 1 : 0
     visible: opacity > 0
+    z: 3
 
     Behavior on opacity {
         NumberAnimation { duration: 200 }
-    }
-
-    function toggle(widget) {
-        if (opened) {
-            close()
-        } else {
-            open(widget)
-        }
     }
 
     function open(widget) {
@@ -63,10 +55,7 @@ Widget {
             popover.offset = 0
         }
         opened = true
-    }
-
-    function close() {
-        opened = false
+        currentOverlay = popover
     }
 
     RectangularGlow {

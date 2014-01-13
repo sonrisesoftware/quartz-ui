@@ -18,7 +18,7 @@
 import QtQuick 2.0
 import QtGraphicalEffects 1.0
 
-Widget {
+PopupBase {
     id: sheet
 
     type: "sheet"
@@ -31,6 +31,7 @@ Widget {
                 maxHeight
             )
     color: "transparent"
+    overlayColor: Qt.rgba(0,0,0,0.4)
     z: 2
 
     property int contentWidth: contents.implicitWidth + contents.anchors.margins * 2
@@ -51,31 +52,11 @@ Widget {
         NumberAnimation { duration: 200 }
     }
 
-    property bool opened: false
     property alias title: titleLabel.text
 
     default property alias data: contents.data
 
     property alias footer: footer.data
-
-    opacity: opened ? 1 : 0
-    visible: opacity > 0
-
-    Behavior on opacity {
-        NumberAnimation { duration: 200 }
-    }
-
-    function open() {
-        opened = true
-        currentSheet = sheet
-        sheetOpen = true
-    }
-
-    function close() {
-        opened = false
-        currentSheet = null
-        sheetOpen = false
-    }
 
     RectangularGlow {
         id: glowEffect

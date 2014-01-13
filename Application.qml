@@ -58,14 +58,14 @@ Item {
         }
     }
 
-    property bool sheetOpen: false
-    property Sheet currentSheet
+    property bool overlayOpen: currentOverlay !== null
+    property PopupBase currentOverlay: null
 
     Rectangle {
         anchors.fill: parent
 
-        color: Qt.rgba(0,0,0,0.4)
-        opacity: sheetOpen ? 1 : 0
+        color: currentOverlay !== null ? currentOverlay.overlayColor : "transparent"
+        opacity: overlayOpen ? 1 : 0
         visible: opacity > 0
 
         Behavior on opacity {
@@ -78,7 +78,7 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
 
-            onClicked: currentSheet.close()
+            onClicked: currentOverlay.close()
         }
     }
 
