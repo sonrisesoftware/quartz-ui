@@ -36,7 +36,8 @@ Widget {
         "times": "",
         "plus": "",
         "bell-o": "",
-        "bell": ""
+        "bell": "",
+        "chevron-left": ""
     }
 
     Text {

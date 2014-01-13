@@ -9,7 +9,8 @@
 	
 	"default": {
 		"fontSize": "14",
-		"textColor": "@foreground",
+		"iconColor": "#555",
+		"textColor": "#333",
 		"background": "white",
 		"foreground": "#33333",
 		"border": "@foreground"

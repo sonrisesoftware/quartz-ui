@@ -61,7 +61,7 @@ Widget {
 
         Icon {
             id: icon
-            color: label.color
+            color: button.styleObject.iconColor
             anchors.verticalCenter: parent.verticalCenter
         }
 
