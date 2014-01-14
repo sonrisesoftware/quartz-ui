@@ -44,7 +44,7 @@ Widget {
     }
 
     Rectangle {
-        color: styleObject.border
+        color: Qt.rgba(0,0,0,0.2)//styleObject.border
 
         anchors {
             left: parent.left

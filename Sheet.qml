@@ -80,7 +80,8 @@ PopupBase {
         anchors.fill: parent
         radius: styleObject.radius
         color: styleObject.background
-        border.color: styleObject.border
+        border.color: Qt.rgba(0,0,0,0.2)//styleObject.border
+        border.width: 0.5
     }
 
     Item {
@@ -133,7 +134,7 @@ PopupBase {
 
         Rectangle {
             height: 1
-            color: styleObject.border
+            color: Qt.rgba(0,0,0,0.2)//styleObject.border
 
             anchors {
                 bottom: parent.bottom
@@ -181,7 +182,7 @@ PopupBase {
     Rectangle {
         id: divider
         height: 1
-        color: styleObject.border
+        color: Qt.rgba(0,0,0,0.2)//styleObject.border
 
         anchors {
             bottom: footer.top

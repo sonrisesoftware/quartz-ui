@@ -24,6 +24,7 @@ Widget {
     type: "icon"
 
     property alias color: text.color
+    property alias size: text.font.pixelSize
 
     color: "transparent"
 

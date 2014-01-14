@@ -30,6 +30,7 @@ PopupBase {
 
     radius: styleObject.radius
     border.color: Qt.rgba(0,0,0,0.2)//styleObject.border
+    border.width: 0.5
     //color: "white"
     color: styleObject.background
 
@@ -38,6 +39,7 @@ PopupBase {
     z: 3
 
     function open(widget) {
+        popover.parent = app
         var position = widget.mapToItem(popover.parent, widget.width/2, widget.height + units.gu(1.5))
         popover.x = position.x - popover.width/2
         popover.y = position.y
@@ -51,7 +53,6 @@ PopupBase {
         } else {
             popover.offset = 0
         }
-        popover.parent = app
         showing = true
         currentOverlay = popover
     }

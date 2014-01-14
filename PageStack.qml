@@ -2,7 +2,6 @@ import QtQuick 2.0
 
 Item {
     id: pageStack
-    anchors.fill: parent
 
     property var stack: []
     property Page currentPage: null

@@ -3,20 +3,8 @@ import "."
 
 Application {
     id: app
-    default property alias data: app.possibleChildren
 
-    property list<QtObject> possibleChildren
-
-    onPossibleChildrenChanged: {
-        for (var i = 0; i < possibleChildren.length; i++) {
-            var item = possibleChildren[i]
-            if (item.hasOwnProperty("type") && item.type === "Page") {
-                item.parent = pageStack
-            } else if (item.hasOwnProperty("parent")) {
-                item.parent = app
-            }
-        }
-    }
+    default property alias data: pageStack.children
 
     NavigationBar {
         id: navbar
@@ -45,5 +33,12 @@ Application {
 
     PageStack {
         id: pageStack
+
+        anchors {
+            left: parent.left
+            right: parent.right
+            top: navbar.bottom
+            bottom: parent.bottom
+        }
     }
 }

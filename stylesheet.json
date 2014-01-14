@@ -163,5 +163,16 @@
 			"maxWidth": "35gu",
 			"radius": "0.6gu"
 		}
+	},
+	
+	"sidebar": {
+		"default": {
+			"background": "#dce1e8",
+			"width": "20gu"
+		},
+		
+		"dark": {
+			"background": "#2d2d2d"
+		}
 	}
 }
