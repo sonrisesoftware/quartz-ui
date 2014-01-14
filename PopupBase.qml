@@ -1,6 +1,7 @@
 import QtQuick 2.0
 
 Widget {
+    id: popup
     property color overlayColor: "transparent"
 
     property bool showing: false
@@ -24,6 +25,7 @@ Widget {
     }
 
     function open() {
+        popup.parent = app
         showing = true
         currentOverlay = sheet
         opened()

@@ -51,6 +51,7 @@ PopupBase {
         } else {
             popover.offset = 0
         }
+        popover.parent = app
         showing = true
         currentOverlay = popover
     }

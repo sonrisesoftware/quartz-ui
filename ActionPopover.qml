@@ -28,7 +28,10 @@ Popover {
                     text: modelData.name
                     iconName: modelData.iconName
                     style: modelData.style
-                    onClicked: modelData.triggered()
+                    onClicked: {
+                        popover.close()
+                        modelData.triggered()
+                    }
                 }
 
                 Item {
