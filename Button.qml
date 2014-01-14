@@ -23,7 +23,9 @@ Widget {
 
     property bool selected
 
+    property bool primary
     type: "button"
+    style: primary ? "primary" : "default"
 
     width: text === "" ? height : Math.max(styleObject.minWidth, row.width + 2 * styleObject.horizPadding)
     height: styleObject.hasOwnProperty("height") && styleObject.height !== "auto" ? styleObject.height : row.height + styleObject.vertPadding

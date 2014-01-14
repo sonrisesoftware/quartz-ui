@@ -16,6 +16,13 @@
 		"border": "@foreground"
 	},
 	
+	"label": {
+		"default": {},
+		"#style": {
+			"textColor": "@brand.#style"
+		}
+	},
+	
 	"button": {
 		"default": {
 			"background": "#fff",

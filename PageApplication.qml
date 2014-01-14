@@ -5,14 +5,14 @@ Application {
     id: app
     default property alias data: app.possibleChildren
 
-    property list<Item> possibleChildren
+    property list<QtObject> possibleChildren
 
     onPossibleChildrenChanged: {
         for (var i = 0; i < possibleChildren.length; i++) {
             var item = possibleChildren[i]
             if (item.hasOwnProperty("type") && item.type === "Page") {
                 item.parent = pageStack
-            } else {
+            } else if (item.hasOwnProperty("parent")) {
                 item.parent = app
             }
         }

@@ -19,38 +19,50 @@ import QtQuick 2.0
 import ".."
 
 Widget {
+    id: listItem
     anchors {
         left: parent.left
         right: parent.right
     }
 
-    height: units.gu(3)
+    property int spacing
+
+    color: mouseOver ? Qt.rgba(0.5,0.5,0.5,0.1) : "transparent"
+
+    Behavior on color {
+        ColorAnimation { duration: 200 }
+    }
+
+    height: label.height + spacing
 
     property bool selected: false
 
+    property string iconName: ""
     property alias text: label.text
 
-    Label {
-        id: label
+    Icon {
+        id: icon
+
+        name: iconName
+
         anchors {
-            verticalCenter: parent.verticalCenter
             left: parent.left
-            right: parent.right
-            margins: units.gu(1)
+            leftMargin: units.gu(1.2)
+            verticalCenter: parent.verticalCenter
         }
     }
 
-    property alias showDivider: divider.visible
+    Label {
+        id: label
 
-    color: fillColor
-
-    Divider {
-        id: divider
+        style: listItem.style
+        customStyle: listItem.customStyle
 
         anchors {
-            bottom: parent.bottom
-            left: parent.left
+            verticalCenter: parent.verticalCenter
+            left: iconName === "" ? parent.left : icon.right
             right: parent.right
+            margins: units.gu(1.2)
         }
     }
 }

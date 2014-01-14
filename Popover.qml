@@ -20,8 +20,11 @@ import QtGraphicalEffects 1.0
 
 PopupBase {
     id: popover
-    width: styleObject.maxWidth
-    height: childrenRect.height
+    width: implicitWidth
+    implicitWidth: styleObject.maxWidth
+    height: contents.childrenRect.height + contents.anchors.margins * 2
+
+    default property alias data: contents.children
 
     type: "popover"
 
@@ -32,13 +35,7 @@ PopupBase {
 
     property int offset: 0
 
-    opacity: opened ? 1 : 0
-    visible: opacity > 0
     z: 3
-
-    Behavior on opacity {
-        NumberAnimation { duration: 200 }
-    }
 
     function open(widget) {
         var position = widget.mapToItem(popover.parent, widget.width/2, widget.height + units.gu(1.5))
@@ -54,7 +51,7 @@ PopupBase {
         } else {
             popover.offset = 0
         }
-        opened = true
+        showing = true
         currentOverlay = popover
     }
 
@@ -89,6 +86,7 @@ PopupBase {
     }
 
     Rectangle {
+        id: contents
         anchors.fill: parent
         anchors.margins: 1
         color: parent.color

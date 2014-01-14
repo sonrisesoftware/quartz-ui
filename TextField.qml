@@ -29,6 +29,10 @@ Widget {
     height: styleObject.height
     width: styleObject.width
 
+    function forceActiveFocus() {
+        edit.forceActiveFocus()
+    }
+
     property bool editing: edit.focus
     color: "transparent"
 

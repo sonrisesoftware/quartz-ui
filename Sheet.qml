@@ -39,9 +39,17 @@ PopupBase {
 
     property bool autosize: false
 
+    function defaultAction() {
+        for (var i = 0; i < footer.children.length; i++) {
+            if (footer.children[i].hasOwnProperty("primary") && footer.children[i].primary) {
+                footer.children[i].clicked(footer.children[i])
+            }
+        }
+    }
+
     anchors {
         centerIn: parent
-        verticalCenterOffset: opened ? 0 : -(parent.height/4)
+        verticalCenterOffset: showing ? 0 : -(parent.height/4)
 
         Behavior on verticalCenterOffset {
             NumberAnimation { duration: 200 }
@@ -195,4 +203,6 @@ PopupBase {
 
         spacing: units.gu(1)
     }
+
+    Keys.onEscapePressed: sheet.close()
 }

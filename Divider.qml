@@ -19,6 +19,6 @@ import QtQuick 2.0
 
 Rectangle {
     id: divider
-    height: 1
+    height: 0.5
     color: "gray"
 }

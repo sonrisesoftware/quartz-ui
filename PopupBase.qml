@@ -3,18 +3,20 @@ import QtQuick 2.0
 Widget {
     property color overlayColor: "transparent"
 
-    property bool opened: false
+    property bool showing: false
 
-    opacity: opened ? 1 : 0
+    opacity: showing ? 1 : 0
     visible: opacity > 0
     z: 1
+
+    signal opened
 
     Behavior on opacity {
         NumberAnimation { duration: 200 }
     }
 
     function toggle(widget) {
-        if (opened) {
+        if (showing) {
             close()
         } else {
             open(widget)
@@ -22,12 +24,13 @@ Widget {
     }
 
     function open() {
-        opened = true
+        showing = true
         currentOverlay = sheet
+        opened()
     }
 
     function close() {
-        opened = false
+        showing = false
         currentOverlay = null
     }
 }
