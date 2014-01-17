@@ -174,5 +174,15 @@
 		"dark": {
 			"background": "#2d2d2d"
 		}
+	},
+	
+	"listitem": {
+		"default": {
+			"background": "transparent",
+			"background_mouseOver": "$rgba 0.5 0.5 0.5 0.1",
+			"selected": "@brand.primary",
+			"iconColor": "#555",
+			"iconColor_selected": "white"
+		}
 	}
 }

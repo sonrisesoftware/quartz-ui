@@ -27,7 +27,8 @@ Widget {
 
     property int spacing
 
-    color: mouseOver ? Qt.rgba(0.5,0.5,0.5,0.1) : "transparent"
+    color: selected ? styleObject.selected
+                    : mouseOver ? Qt.rgba(0.5, 0.5, 0.5, 0.3) : styleObject.background
 
     Behavior on color {
         ColorAnimation { duration: 200 }
@@ -35,15 +36,21 @@ Widget {
 
     height: label.height + spacing
 
+    type: "listitem"
     property bool selected: false
 
     property string iconName: ""
     property alias text: label.text
+    property int fontSize: units.gu(2)
+    property alias iconColor: icon.color
+    property alias font: label.font
 
     Icon {
         id: icon
 
         name: iconName
+        size: listItem.fontSize
+        color: listItem.selected ? listItem.styleObject.iconColor_selected : listItem.styleObject.iconColor
 
         anchors {
             left: parent.left
@@ -57,6 +64,8 @@ Widget {
 
         style: listItem.style
         customStyle: listItem.customStyle
+        size: listItem.fontSize
+        color: listItem.selected ? listItem.styleObject.iconColor_selected : listItem.styleObject.iconColor
 
         anchors {
             verticalCenter: parent.verticalCenter
@@ -64,5 +73,15 @@ Widget {
             right: parent.right
             margins: units.gu(1.2)
         }
+    }
+
+    property bool showDivider: false
+
+    Rectangle {
+        anchors.bottom: parent.bottom
+        height: 0.5
+        width: parent.width
+        visible: showDivider
+        color: Qt.rgba(0,0,0,0.2)
     }
 }

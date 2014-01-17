@@ -40,7 +40,10 @@ Widget {
         "bell": "",
         "chevron-left": "",
         "cog": "",
-        "minus": ""
+        "minus": "",
+        "dashboard": "",
+        "calendar-empty": "",
+        "calendar": ""
     }
 
     Text {
