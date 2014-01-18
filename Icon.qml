@@ -43,7 +43,9 @@ Widget {
         "minus": "",
         "dashboard": "",
         "calendar-empty": "",
-        "calendar": ""
+        "calendar": "",
+        "bars":"",
+        "inbox": ""
     }
 
     Text {
