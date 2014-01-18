@@ -32,6 +32,7 @@ Widget {
     height: text.height
 
     mouseEnabled: false
+    property bool shadow: false
 
     property var icons: {
         "times": "",
@@ -56,6 +57,8 @@ Widget {
         font.weight: Font.Light
         text: widget.icons[widget.name]
         color: widget.enabled ? styleObject.color : styleObject.color_disabled
+        style: shadow ? Text.Raised : Text.Normal
+        styleColor: Qt.rgba(0,0,0,0.9)
 
         Behavior on color {
             ColorAnimation { duration: 200 }
