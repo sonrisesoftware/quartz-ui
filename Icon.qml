@@ -46,7 +46,9 @@ Widget {
         "calendar-empty": "",
         "calendar": "",
         "bars":"",
-        "inbox": ""
+        "inbox": "",
+        "list": "",
+        "comment": ""
     }
 
     Text {
