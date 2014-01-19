@@ -48,7 +48,12 @@ Widget {
         "bars":"",
         "inbox": "",
         "list": "",
-        "comment": ""
+        "long-list": "",
+        "comment": "",
+        "download": "",
+        "tasks": "",
+        "bug": "",
+        "code-fork": ""
     }
 
     Text {

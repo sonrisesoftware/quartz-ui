@@ -52,6 +52,8 @@ Widget {
         size: units.gu(3)
         color: listItem.selected ? listItem.styleObject.iconColor_selected : listItem.styleObject.iconColor
 
+        width: height
+
         anchors {
             left: parent.left
             leftMargin: units.gu(1.2)
@@ -96,6 +98,7 @@ Widget {
                 size: listItem.fontSize
                 color: listItem.selected ? listItem.styleObject.iconColor_selected : listItem.styleObject.iconColor
                 text: date
+                font.italic: true
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: parent.right
             }
@@ -112,7 +115,7 @@ Widget {
             width: parent.width
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
             elide: Text.ElideRight
-            maximumLineCount: 2
+            maximumLineCount:2
         }
     }
 

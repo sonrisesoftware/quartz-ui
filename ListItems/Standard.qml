@@ -48,6 +48,7 @@ Widget {
     Icon {
         id: icon
 
+        width: height
         name: iconName
         size: listItem.fontSize
         color: listItem.selected ? listItem.styleObject.iconColor_selected : listItem.styleObject.iconColor
@@ -65,7 +66,7 @@ Widget {
         style: listItem.style
         customStyle: listItem.customStyle
         size: listItem.fontSize
-        color: listItem.selected ? listItem.styleObject.iconColor_selected : listItem.styleObject.iconColor
+        color: listItem.selected ? listItem.styleObject.textColor_selected : listItem.styleObject.textColor
 
         anchors {
             verticalCenter: parent.verticalCenter

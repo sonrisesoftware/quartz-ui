@@ -10,7 +10,7 @@
 	"default": {
 		"fontSize": "14",
 		"iconColor": "#555",
-		"textColor": "#333",
+		"textColor": "#555",
 		"background": "white",
 		"foreground": "#33333",
 		"border": "@foreground"
@@ -183,6 +183,9 @@
 			"selected": "@brand.primary",
 			"iconColor": "#555",
 			"iconColor_selected": "white"
+		},
+		"#style": {
+			"textColor": "@brand.#style"
 		}
 	}
 }
