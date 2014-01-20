@@ -53,7 +53,8 @@ Widget {
         "download": "",
         "tasks": "",
         "bug": "",
-        "code-fork": ""
+        "code-fork": "",
+        "clock-o": ""
     }
 
     Text {

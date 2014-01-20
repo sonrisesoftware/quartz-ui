@@ -24,7 +24,7 @@ Popover {
             delegate: Column {
                 width: parent.width
                 ListItem.Standard {
-                    spacing: units.gu(1)
+                    showDivider: false
                     text: modelData.name
                     iconName: modelData.iconName
                     style: modelData.style
