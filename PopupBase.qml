@@ -24,10 +24,12 @@ Widget {
         }
     }
 
+    Component.onCompleted: popup.parent = app
+
     function open() {
         popup.parent = app
         showing = true
-        currentOverlay = sheet
+        currentOverlay = popup
         opened()
     }
 

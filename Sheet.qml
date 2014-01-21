@@ -156,7 +156,7 @@ PopupBase {
         }
 
         contentHeight: item.height
-        contentWidth: item.width
+        contentWidth: flickable.width
 
         Item {
             id: item

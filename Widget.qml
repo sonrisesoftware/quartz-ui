@@ -44,7 +44,7 @@ Rectangle {
 
         while (obj) {
             if (obj[name]) {
-                return parent[name]
+                return obj[name]
             } else if (typeof obj.getParent == 'function') {
                 return obj.getParent(name, def)
             }
@@ -58,6 +58,7 @@ Rectangle {
     //color: "transparent"
 
     signal clicked(var caller)
+    signal rightClicked(var caller)
 
     property alias mouseOver: mouseArea.containsMouse
     property alias pressed: mouseArea.pressed
@@ -81,14 +82,19 @@ Rectangle {
     MouseArea {
         id: mouseArea
         hoverEnabled: true
+        acceptedButtons: Qt.LeftButton | Qt.RightButton
 
         visible: mouseEnabled
 
         anchors.fill: parent
 
         onClicked: {
-            widget.forceActiveFocus()
-            widget.clicked(widget)
+            if (mouse.button == Qt.LeftButton) {
+                widget.forceActiveFocus()
+                widget.clicked(widget)
+            } else if (mouse.button == Qt.RightButton) {
+                widget.rightClicked(widget)
+            }
         }
 
         onEntered: {

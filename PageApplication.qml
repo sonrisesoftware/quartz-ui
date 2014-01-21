@@ -4,7 +4,7 @@ import "."
 Application {
     id: app
 
-    default property alias data: pageStack.children
+    default property alias data: pageStack.data
 
     NavigationBar {
         id: navbar

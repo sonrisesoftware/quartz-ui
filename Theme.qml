@@ -57,7 +57,7 @@ Object {
                 if (subobj[key] === undefined)
                     continue
                 if (typeof(newobj[key]) === "object" || typeof(subobj[key]) === "object") {
-                    print("TYPE OBJECT, EXTENDING")
+                    //print("TYPE OBJECT, EXTENDING")
                     newobj[key] = extend(newobj[key], subobj[key])
                 } else {
                     newobj[key] = subobj[key]
@@ -69,7 +69,7 @@ Object {
     }
 
     function getStyleObject(type, style, size, customStyle) {
-        print("STYLE:", style)
+        //print("STYLE:", style)
         var obj = getValue(stylesheetData, "default", {})
         obj = extend(obj, getValue(stylesheetData, type + ".default", {}))
         if (style !== "default") {
@@ -78,7 +78,7 @@ Object {
         }
         obj = extend(obj, customStyle)
 
-        print(size)
+        //print(size)
 
         obj = exec(obj, obj, style, size)
 
@@ -121,7 +121,7 @@ Object {
                 }
             }
 
-            print("Key exists:", key)
+            //print("Key exists:", key)
 
             return data
         } else {
@@ -157,7 +157,7 @@ Object {
 
                 return String(functions[tokens[0].slice(1)](args))
             } else if (code.indexOf('gu') === code.length - 2) {
-                print("Units gu:", units.gu(Number(code.slice(0, code.length - 2))))
+                //print("Units gu:", units.gu(Number(code.slice(0, code.length - 2))))
                 return units.gu(Number(code.slice(0, code.length - 2)))
             } else {
                 return code
