@@ -39,7 +39,7 @@ PopupBase {
     z: 3
 
     function open(widget) {
-        popover.parent = app
+        popover.parent = overlayLayer
         var position = widget.mapToItem(popover.parent, widget.width/2, widget.height + units.gu(1.5))
         popover.x = position.x - popover.width/2
         popover.y = position.y

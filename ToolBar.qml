@@ -28,7 +28,7 @@ Widget {
     }
 
     color: styleObject.background
-    height: styleObject.height
+    height: units.gu(7)
 
     property string title
 
@@ -38,7 +38,7 @@ Widget {
         anchors {
             left: parent.left
             right: parent.right
-            bottom: parent.bottom
+            top: parent.top
         }
 
         height: 1

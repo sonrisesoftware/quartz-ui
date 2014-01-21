@@ -27,7 +27,7 @@ Widget {
     Component.onCompleted: popup.parent = app
 
     function open() {
-        popup.parent = app
+        popup.parent = overlayLayer
         showing = true
         currentOverlay = popup
         opened()

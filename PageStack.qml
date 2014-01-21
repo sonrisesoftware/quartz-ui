@@ -4,14 +4,16 @@ Item {
     id: pageStack
 
     property var stack: []
-    property Page currentPage: null
+    property Page currentItem: null
+    property Page currentPage: currentTabs ? currentTabs.selectedPage : currentItem
+    property Tabs currentTabs: currentItem && currentItem.hasOwnProperty("selectedPage") ? currentItem : null
 
     function push(page) {
-        stack.push(currentPage)
-        currentPage = page
+        stack.push(currentItem)
+        currentItem = page
     }
 
     function pop() {
-        currentPage = stack.pop()
+        currentItem = stack.pop()
     }
 }

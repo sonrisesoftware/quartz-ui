@@ -6,6 +6,7 @@ Item {
     visible: pageStack.currentPage === page
 
     property string title
+    property int count
 
     property list<Item> leftWidgets
     property list<Item> rightWidgets

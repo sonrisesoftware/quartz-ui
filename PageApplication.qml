@@ -8,7 +8,12 @@ Application {
 
     NavigationBar {
         id: navbar
-        title: pageStack.currentPage.title
+        title: pageStack.currentTabs ? "" : pageStack.currentPage.title
+
+        TabBar {
+            anchors.centerIn: parent
+            tabs: pageStack.currentTabs
+        }
 
         leftWidgets: pageStack.currentPage.leftWidgets
         rightWidgets: pageStack.currentPage.rightWidgets

@@ -19,8 +19,10 @@ import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Window 2.0
 
-Item {
+Window {
     id: app
+
+    default property alias data: contents.data
 
     property url stylesheet: Qt.resolvedUrl("stylesheet.json")
 
@@ -61,6 +63,12 @@ Item {
 
     property bool overlayOpen: currentOverlay !== null
     property PopupBase currentOverlay: null
+    property alias overlayLayer: overlay
+
+    Rectangle {
+        id: contents
+        anchors.fill: parent
+    }
 
     Rectangle {
         anchors.fill: parent
@@ -73,13 +81,16 @@ Item {
             NumberAnimation { duration: 200 }
         }
 
-        z: 1
-
         MouseArea {
             anchors.fill: parent
 
             onClicked: currentOverlay.close()
         }
+    }
+
+    Item {
+        id: overlay
+        anchors.fill: parent
     }
 
     property ToolTip appToolTip: appToolTip

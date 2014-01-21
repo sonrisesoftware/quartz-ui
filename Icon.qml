@@ -54,8 +54,11 @@ Widget {
         "tasks": "",
         "bug": "",
         "code-fork": "",
-        "clock-o": ""
+        "clock-o": "",
+        "pencil-square-o":""
     }
+
+    property alias weight: text.font.weight
 
     Text {
         id: text
