@@ -33,6 +33,8 @@ Page {
     Item {
         id: contents
 
+        property var selectedPage: tabs.selectedPage
+
         anchors {
             left: parent.left
             top: tabbar.bottom
