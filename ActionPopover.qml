@@ -5,7 +5,7 @@ Popover {
     id: popover
 
     width: Math.max(units.gu(20), Math.min(implicitWidth, childrenRect.width))
-    height: column.height + units.gu(2)
+    height: column.height + units.gu(2.2)
 
     property list<Action> actions
 

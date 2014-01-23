@@ -55,7 +55,8 @@ Widget {
         "bug": "",
         "code-fork": "",
         "clock-o": "",
-        "pencil-square-o":""
+        "pencil-square-o":"",
+                "trash": ""
     }
 
     property alias weight: text.font.weight

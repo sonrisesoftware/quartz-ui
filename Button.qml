@@ -27,6 +27,8 @@ Widget {
     type: "button"
     style: primary ? "primary" : "default"
 
+    property bool hidden: false
+
     width: text === "" ? height : Math.max(styleObject.minWidth, row.width + 2 * styleObject.horizPadding)
     height: styleObject.hasOwnProperty("height") && styleObject.height !== "auto" ? styleObject.height : row.height + styleObject.vertPadding
 
@@ -34,8 +36,8 @@ Widget {
     property alias text: label.text
     property alias iconName: icon.name
 
-    border.color: styleObject.border
-    color: selected || mouseOver ? styleObject.background_mouseOver : styleObject.background
+    border.color: mouseOver || !hidden ? styleObject.border : "transparent"
+    color: selected || mouseOver ? styleObject.background_mouseOver : hidden ? Qt.rgba(1,1,1,0) : styleObject.background
 
     Behavior on border.color {
         ColorAnimation { duration: 200 }

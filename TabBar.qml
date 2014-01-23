@@ -3,24 +3,52 @@ import QtGraphicalEffects 1.0
 
 Row {
     id: tabbar
-    property Tabs tabs
+    property var tabs
     height: parent.height
 
     Repeater {
+        id: repeater
         model: tabs ? tabs.pages : []
 
         delegate: Widget {
-            width: row.width + (height - row.height) + units.gu(1)
+            id: tabItem
+            width: (tabbar.width)/repeater.count
             height: parent.height
-            onClicked: pageStack.currentTabs.selectedPage = modelData
+            onClicked: tabs.selectedPage = modelData
 
-            property bool selected: pageStack.currentTabs.selectedPage === modelData
+            property bool selected: tabs.selectedPage === modelData
 
-            color: selected ? Qt.rgba(0.7,0.7,0.7,0.5)
-                            : mouseOver ? Qt.rgba(0.7,0.7,0.7,0.2) : Qt.rgba(0.7,0.7,0.7,0)
+            color: selected ? Qt.rgba(0.9,0.9,0.9,0.15) :  Qt.rgba(0.9,0.9,0.9,0.5)
 
             Behavior on color {
                 ColorAnimation { duration: 200 }
+            }
+
+            Rectangle {
+                id: selectionIndicator
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    bottom: parent.bottom
+                }
+
+                height: 5
+                color: "#428bca"
+                opacity: tabItem.selected ? 1 : 0
+                Behavior on opacity {
+                    NumberAnimation { duration: 200 }
+                }
+            }
+
+            Rectangle {
+                anchors {
+                    right: parent.right
+                    top: parent.top
+                    bottom: parent.bottom
+                }
+                width: 1
+                visible: index < repeater.count - 1
+                color: Qt.rgba(0,0,0,0.2)
             }
 
             Row {

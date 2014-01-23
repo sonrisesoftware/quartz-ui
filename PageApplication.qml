@@ -8,15 +8,10 @@ Application {
 
     NavigationBar {
         id: navbar
-        title: pageStack.currentTabs ? "" : pageStack.currentPage.title
+        title: pageStack.currentItem.title
 
-        TabBar {
-            anchors.centerIn: parent
-            tabs: pageStack.currentTabs
-        }
-
-        leftWidgets: pageStack.currentPage.leftWidgets
-        rightWidgets: pageStack.currentPage.rightWidgets
+        leftWidgets: pageStack.currentItem.leftWidgets
+        rightWidgets: pageStack.currentItem.rightWidgets
     }
 
     property alias pageStack: pageStack
