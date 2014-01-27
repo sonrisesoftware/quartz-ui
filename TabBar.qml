@@ -4,11 +4,27 @@ import QtGraphicalEffects 1.0
 Row {
     id: tabbar
     property var tabs
-    height: parent.height
+    height: model.length > 1 ? units.gu(5) : 0
+    clip: true
+
+    Behavior on height {
+        NumberAnimation { duration: 200 }
+    }
+
+    property var model: {
+        var list = []
+
+        for (var i = 0; i < tabs.pages.length; i++) {
+            if (tabs.pages[i].show)
+                list.push(tabs.pages[i])
+        }
+
+        return list
+    }
 
     Repeater {
         id: repeater
-        model: tabs ? tabs.pages : []
+        model: tabbar.model
 
         delegate: Widget {
             id: tabItem
@@ -33,7 +49,7 @@ Row {
                 }
 
                 height: 5
-                color: "#428bca"
+                color: theme.primary
                 opacity: tabItem.selected ? 1 : 0
                 Behavior on opacity {
                     NumberAnimation { duration: 200 }
@@ -49,6 +65,26 @@ Row {
                 width: 1
                 visible: index < repeater.count - 1
                 color: Qt.rgba(0,0,0,0.2)
+            }
+
+            Button {
+                id: button
+                iconName: "times"
+                anchors {
+                    right: parent.right
+                    rightMargin: units.gu(1)
+                    verticalCenter: parent.verticalCenter
+                }
+
+                onClicked: modelData.close()
+
+                height: units.gu(2.5)
+                hidden: true
+                opacity: modelData.closeable// && (tabItem.mouseOver || button.mouseOver) ? 1 : 0
+
+                Behavior on opacity {
+                    NumberAnimation { duration: 200 }
+                }
             }
 
             Row {

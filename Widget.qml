@@ -23,37 +23,8 @@ Rectangle {
     width: 100
     height: 62
 
-    property string type: ""
-    property string style: getParent("style", "default")
-    property string size: getParent("size", "default") // or "large", "medium", or "small"
-    property bool dark: styleObject.hasOwnProperty("dark") ? styleObject.dark : false
-
-    property bool inheritsParent: true
-
-    property var customStyle: getParent("customStyle", undefined)
-
-    property var styleObject: theme.getStyleObject(type, style, size, customStyle)
-
-    property bool mouseEnabled: true
-
-    function getParent(name, def) {
-        if (!inheritsParent)
-            return def
-
-        var obj = parent
-
-        while (obj) {
-            if (obj[name]) {
-                return obj[name]
-            } else if (typeof obj.getParent == 'function') {
-                return obj.getParent(name, def)
-            }
-
-            obj = obj.parent
-        }
-
-        return def
-    }
+    property string style: "default"
+    property bool mouseEnabled: opacity > 0
 
     //color: "transparent"
 

@@ -6,6 +6,7 @@ Page {
 
     property var selectedPage: pages.length > 0 ? pages[0] : null
     default property alias pages: contents.children
+    clip: true
 
     TabBar {
         id: tabbar
@@ -15,8 +16,6 @@ Page {
             top: parent.top
             right: parent.right
         }
-
-        height: units.gu(5)
     }
 
     Rectangle {

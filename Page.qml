@@ -9,6 +9,10 @@ Item {
 
     property string title
     property int count
+    property bool closeable
+    property bool show: true
+
+    signal close
 
     property list<Item> leftWidgets
     property list<Item> rightWidgets

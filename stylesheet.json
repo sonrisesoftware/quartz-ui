@@ -16,6 +16,10 @@
 		"border": "@foreground"
 	},
 	
+	"window": {
+		"background": "#e3e3e3"
+	},
+	
 	"label": {
 		"default": {},
 		"#style": {
@@ -169,6 +173,18 @@
 		"default": {
 			"background": "#dce1e8",
 			"width": "20gu"
+		},
+		
+		"dark": {
+			"background": "#333"
+		}
+	},
+	
+	"slider": {
+		"default": {
+			"background": "#dce1e8",
+			"width": "20gu",
+			"height": "3gu"
 		},
 		
 		"dark": {

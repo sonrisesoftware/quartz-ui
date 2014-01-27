@@ -16,24 +16,31 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
-
 Widget {
     id: navbar
-    type: "navbar"
-    height: styleObject.height
 
-    //color: styleObject.background
+    //----- STYLE PROPERTIES -----//
+
+    property color borderColor: Qt.rgba(0,0,0,0.2)
+    property color background: "#eee"
     gradient: Gradient {
         GradientStop {
             position: 0.0
-            color: styleObject.background
+            color: background
         }
 
         GradientStop {
             position: 1.0
-            color: Qt.darker(styleObject.background, 1.1)
+            color: Qt.darker(background, 1.2)
         }
     }
+
+    height: units.gu(6)
+
+    property int spacing: units.gu(1)
+    property color titleColor: "#777"
+
+    //----- VALUE PROPERTIES -----//
 
     property string title
 
@@ -44,7 +51,7 @@ Widget {
     }
 
     Rectangle {
-        color: Qt.rgba(0,0,0,0.2)//styleObject.border
+        color: borderColor
 
         anchors {
             left: parent.left
@@ -57,8 +64,8 @@ Widget {
 
     Label {
         id: titleWidget
-        color: navbar.styleObject.title.textColor
-        fontSize: navbar.styleObject.title.fontSize
+        color: titleColor
+        fontSize: "x-large"
 
         text: navbar.title
 
@@ -71,11 +78,11 @@ Widget {
         id: leftItem
         anchors {
             left: parent.left
-            leftMargin: styleObject.margins
+            leftMargin: navbar.spacing
             verticalCenter: parent.verticalCenter
         }
 
-        spacing: styleObject.spacing
+        spacing: navbar.spacing
 
     }
 
@@ -85,10 +92,10 @@ Widget {
         id: rightItem
         anchors {
             right: parent.right
-            rightMargin: styleObject.margins
+            rightMargin: navbar.spacing
             verticalCenter: parent.verticalCenter
         }
 
-        spacing: styleObject.spacing
+        spacing: navbar.spacing
     }
 }

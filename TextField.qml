@@ -24,10 +24,57 @@ Widget {
 
     signal triggered
 
-    type: "textfield"
+    //----- STYLE PROPERTIES -----//
 
-    height: styleObject.height
-    width: styleObject.width
+    property color textColor: "#333"
+    property color background: "#fafafa"
+    property color borderColor: "#ccc"
+    property color borderColor_focus: "#66afe9"
+    radius: units.gu(0.5)
+
+    height: units.gu(4)
+    width: units.gu(30)
+
+    property var fontSize: "medium"
+
+    //
+
+    /*"textfield": {
+            "default": {
+                "background": "#fafafa",
+                "border": "#ccc",
+                "border_focus": "#66afe9",
+                "textColor": "#333",
+                "placeholderColor": "lightgray",
+                "height": "4gu",
+                "width": "30gu",
+                "radius": "0.5gu"
+            },
+            "success": {
+                "textColor": "#468847",
+                "background": "#dff0d8",
+                "border": "$darker @background 1.2",
+                "border_focus": "$darker @background 1.4"
+            },
+            "danger": {
+                "textColor": "#b94a48",
+                "background": "#f2dede",
+                "border": "$darker @background 1.2",
+                "border_focus": "$darker @background 1.4"
+            },
+            "warning": {
+                "textColor": "#c09853",
+                "background": "#fcf8e3",
+                "border": "$darker @background 1.2",
+                "border_focus": "$darker @background 1.4"
+            },
+            "info": {
+                "textColor": "#3a87ad",
+                "background": "#d9edf7",
+                "border": "$darker @background 1.2",
+                "border_focus": "$darker @background 1.4"
+            }
+        },*/
 
     function forceActiveFocus() {
         edit.forceActiveFocus()
@@ -54,10 +101,10 @@ Widget {
         id: rect
         anchors.fill: parent
 
-        radius: styleObject.radius
+        radius: textField.radius
 
-        border.color: editing ? styleObject.border_focus : styleObject.border
-        color: styleObject.background
+        border.color: editing ? borderColor_focus : borderColor
+        color: background
 
         property bool editing: edit.focus
 
@@ -82,7 +129,7 @@ Widget {
         opacity: 0.5
         visible: !edit.focus && textField.text.length === 0
 
-        color: textField.styleObject.textColor
+        color: textColor
 
         anchors {
             left: parent.left
@@ -95,7 +142,7 @@ Widget {
     TextInput {
         id: edit
         clip: true
-        color: textField.styleObject.textColor
+        color: textColor
 
         anchors {
             verticalCenter: parent.verticalCenter
@@ -105,7 +152,7 @@ Widget {
             margins: units.gu(1)
         }
 
-        selectionColor: textField.styleObject.border_focus
+        selectionColor: borderColor_focus
 
         onAccepted: triggered()
     }

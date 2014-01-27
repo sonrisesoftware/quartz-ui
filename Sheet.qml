@@ -21,13 +21,28 @@ import QtGraphicalEffects 1.0
 PopupBase {
     id: sheet
 
-    type: "sheet"
+    //----- STYLE PROPERTIES -----//
+
+    property color titleColor: style === "default" ? theme.textColor : theme.getStyleColor(titleColor)
+    property color background: "white"
+    property int margins: units.gu(2)
+    property int spacing: units.gu(1)
+    property color borderColor: Qt.rgba(0,0,0,0.2)
+    property string titleFontSize: "x-large"
+    property int titleAlignment: Qt.AlignCenter
+    property int footerAlignment: Qt.AlignRight
+    radius: units.gu(0.7)
+
+    property int horizPadding: units.gu(2)
+    property int minHeight: units.gu(25)
+    width: units.gu(45)
+
+    //
 
     property int maxHeight: sheet.parent.height - units.gu(4)
 
-    width: styleObject.width === "auto" || autosize ? contentWidth : styleObject.width
     height: Math.min(
-                Math.max(styleObject.minHeight, contentHeight + titleBar.height + footer.height + footer.anchors.margins * 2 + divider.height),
+                Math.max(minHeight, contentHeight + titleBar.height + footer.height + footer.anchors.margins * 2 + divider.height),
                 maxHeight
             )
     color: "transparent"
@@ -78,9 +93,9 @@ PopupBase {
 
     Rectangle {
         anchors.fill: parent
-        radius: styleObject.radius
-        color: styleObject.background
-        border.color: Qt.rgba(0,0,0,0.2)//styleObject.border
+        radius: sheet.radius
+        color: sheet.background
+        border.color: borderColor
         border.width: 0.5
     }
 
@@ -93,31 +108,23 @@ PopupBase {
             right: parent.right
         }
 
-        height: titleLabel.height + 2 * styleObject.header.margins
-        clip: true
-
-        Rectangle {
-            radius: styleObject.margins
-            color: styleObject.header.background
-            width: parent.width
-            height: titleLabel.height + 2 * styleObject.header.insets + sheet.radius
-        }
+        height: titleLabel.height + 2 * units.gu(1.5)
 
         Label {
             id: titleLabel
 
-            fontSize: sheet.styleObject.header.fontSize
-            color: sheet.styleObject.header.textColor
+            fontSize: titleFontSize
+            color: titleColor
             anchors {
-                right: sheet.styleObject.header.snap == "right" ? closeIcon.right : undefined
-                left: sheet.styleObject.header.snap == "left" ? parent.left : undefined
-                horizontalCenter: sheet.styleObject.header.snap == "center" ? parent.horizontalCenter : undefined
+                right: titleAlignment == Qt.AlignRight ? closeIcon.right : undefined
+                left: titleAlignment == Qt.AlignLeft ? parent.left : undefined
+                horizontalCenter: titleAlignment == Qt.AlignCenter ? parent.horizontalCenter : undefined
                 verticalCenter: parent.verticalCenter
-                margins: sheet.styleObject.header.margins
+                margins: units.gu(1.5)
             }
         }
 
-        IconButton {
+       Button {
             id: closeIcon
             anchors {
                 verticalCenter: parent.verticalCenter
@@ -127,14 +134,14 @@ PopupBase {
 
             iconName: "times"
             hidden: true
-            color: mouseOver ? Qt.rgba(0.4,0.4,0.4,1) : Qt.rgba(0.7,0.7,0.7,1)
+            //color: mouseOver ? Qt.rgba(0.4,0.4,0.4,1) : Qt.rgba(0.7,0.7,0.7,1)
 
             onClicked: sheet.close()
         }
 
         Rectangle {
             height: 1
-            color: Qt.rgba(0,0,0,0.2)//styleObject.border
+            color: borderColor
 
             anchors {
                 bottom: parent.bottom
@@ -161,16 +168,16 @@ PopupBase {
         Item {
             id: item
             width: flickable.width
-            height: contents.implicitHeight + contents.anchors.margins * 2
+            height: contents.implicitHeight + margins * 2
             Column {
                 id: contents
 
                 anchors {
                     fill: parent
-                    margins: styleObject.margins
+                    margins: sheet.margins
                 }
 
-                spacing: styleObject.spacing
+                spacing: sheet.spacing
             }
         }
     }
@@ -182,24 +189,24 @@ PopupBase {
     Rectangle {
         id: divider
         height: 1
-        color: Qt.rgba(0,0,0,0.2)//styleObject.border
+        color: borderColor
 
         anchors {
             bottom: footer.top
             left: parent.left
             right: parent.right
-            bottomMargin: styleObject.footer.margins
+            bottomMargin: units.gu(1)
         }
     }
 
     Row {
         id: footer
         anchors {
-            right: styleObject.footer.snap == "right" ? parent.right : undefined
-            left: styleObject.footer.snap == "left" ? parent.left : undefined
-            horizontalCenter: styleObject.footer.snap == "center" ? parent.horizontalCenter : undefined
+            right: footerAlignment == Qt.AlignRight ? parent.right : undefined
+            left: footerAlignment == Qt.AlignLeft ? parent.left : undefined
+            horizontalCenter: footerAlignment == Qt.AlignCenter ? parent.horizontalCenter : undefined
             bottom: parent.bottom
-            margins: styleObject.footer.margins
+            margins: units.gu(1)
         }
 
         spacing: units.gu(1)

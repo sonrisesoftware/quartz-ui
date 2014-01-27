@@ -18,17 +18,12 @@
 import QtQuick 2.0
 
 Text {
-    property string fontSize: styleObject.fontSize
+    property string fontSize: "medium"
+    //font.family: "Open Sans"
 
     property string style: "default"
-    property bool dark: false
-    property string size: "default" // or "large", "medium", or "small"
 
-    property var customStyle
-
-    property var styleObject: theme.getStyleObject("label", style, size, customStyle)
-
-    color: styleObject.textColor
+    color: style === "default" ? theme.textColor : theme.getStyleColor(style)
 
     font.pixelSize: units.fontSize(fontSize)
 }

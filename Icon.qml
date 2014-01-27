@@ -21,8 +21,6 @@ Widget {
     id: widget
     property string name
 
-    type: "icon"
-
     property alias color: text.color
     property alias size: text.font.pixelSize
 
@@ -35,11 +33,13 @@ Widget {
     property bool shadow: false
 
     property var icons: {
+        "save": "",
         "times": "",
         "plus": "",
         "bell-o": "",
         "bell": "",
         "chevron-left": "",
+        "chevron-right": "",
         "cog": "",
         "minus": "",
         "dashboard": "",
@@ -56,7 +56,12 @@ Widget {
         "code-fork": "",
         "clock-o": "",
         "pencil-square-o":"",
-                "trash": ""
+        "check-square-o":"",
+        "picture-o":"",
+        "trash": "",
+        "code": "",
+        "users": "",
+        "exchange": ""
     }
 
     property alias weight: text.font.weight
@@ -67,7 +72,7 @@ Widget {
 
         font.family: "FontAwesome"
         font.weight: Font.Light
-        text: widget.icons[widget.name]
+        text: widget.icons.hasOwnProperty(widget.name) ? widget.icons[widget.name] : ""
         color: widget.enabled ? styleObject.color : styleObject.color_disabled
         style: shadow ? Text.Raised : Text.Normal
         styleColor: Qt.rgba(0,0,0,0.9)

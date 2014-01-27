@@ -21,23 +21,34 @@ import QtGraphicalEffects 1.0
 Widget {
     id: button
 
-    property bool selected
+    //----- STYLE PROPERTIES -----//
+
+    property color textColor: style === "default" ? theme.textColor : "white"
+    property color background: style === "default" ? "white" : theme.getStyleColor(style)
+    property color background_mouseOver: style == "default" ? Qt.darker(background, 1.1) : Qt.darker(background, 1.15)
+    property color borderColor: Qt.darker(background, 1.4)
+    radius: units.gu(0.5)
+
+    property int horizPadding: units.gu(2)
+    property int minWidth: units.gu(10)
+    height: units.gu(4)
+
+    property var fontSize: "medium"
+
+    //----- STATE PROPERTIES -----//
 
     property bool primary
-    type: "button"
+    property bool selected
+    property bool hidden
     style: primary ? "primary" : "default"
 
-    property bool hidden: false
+    width: text === "" ? height : Math.max(minWidth, row.width + 2 * horizPadding)
 
-    width: text === "" ? height : Math.max(styleObject.minWidth, row.width + 2 * styleObject.horizPadding)
-    height: styleObject.hasOwnProperty("height") && styleObject.height !== "auto" ? styleObject.height : row.height + styleObject.vertPadding
-
-    radius: styleObject.radius
     property alias text: label.text
     property alias iconName: icon.name
 
-    border.color: mouseOver || !hidden ? styleObject.border : "transparent"
-    color: selected || mouseOver ? styleObject.background_mouseOver : hidden ? Qt.rgba(1,1,1,0) : styleObject.background
+    border.color: mouseOver || !hidden ? borderColor : "transparent"
+    color: selected || mouseOver ? background_mouseOver : hidden ? Qt.rgba(1,1,1,0) : background
 
     Behavior on border.color {
         ColorAnimation { duration: 200 }
@@ -65,15 +76,15 @@ Widget {
 
         Icon {
             id: icon
-            color: button.styleObject.iconColor
+            color: button.textColor
             anchors.verticalCenter: parent.verticalCenter
         }
 
         Label {
             id: label
 
-            color: button.styleObject.textColor
-            fontSize: button.styleObject.fontSize
+            color: button.textColor
+            fontSize: button.fontSize
             anchors.verticalCenter: parent.verticalCenter
 
             Behavior on color {

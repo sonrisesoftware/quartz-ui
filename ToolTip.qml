@@ -20,15 +20,23 @@ import QtQuick 2.0
 Widget {
     id: toolTip
 
-    type: "tooltip"
-    inheritsParent: false
+    //----- STYLE PROPERTIES -----//
 
-    width: Math.max(styleObject.minWidth, label.width + styleObject.margins * 2)
-    height: label.height + styleObject.margins
+    property color textColor: "white"
+    property color background: "black"
+    radius: units.gu(0.6)
 
-    color: styleObject.background
-    border.color: styleObject.border
-    radius: styleObject.radius
+    property int minWidth: units.gu(10)
+    property int margins: units.gu(1)
+
+    property var fontSize: "medium"
+
+    //
+
+    width: Math.max(minWidth, label.width + margins * 2)
+    height: label.height + margins
+
+    color: background
 
     property alias text: label.text
 
@@ -52,7 +60,7 @@ Widget {
             leftMargin: units.gu(1)
         }
 
-        color: toolTip.styleObject.textColor
+        color: textColor
     }
 
     function show(widget) {

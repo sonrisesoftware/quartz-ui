@@ -26,8 +26,6 @@ PopupBase {
 
     default property alias data: contents.children
 
-    type: "popover"
-
     radius: styleObject.radius
     border.color: Qt.rgba(0,0,0,0.2)//styleObject.border
     border.width: 0.5

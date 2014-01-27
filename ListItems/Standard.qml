@@ -20,6 +20,19 @@ import ".."
 
 Widget {
     id: listItem
+
+    //----- STYLE PROPERTIES -----//
+
+    property color textColor: selected ? "white" : "#555"
+    property color background: "transparent"
+    property color background_mouseOver: Qt.rgba(0.5,0.5,0.5,0.1)
+    property color background_selected: theme.primary
+
+    height: units.gu(3)
+
+    //
+
+
     anchors {
         left: parent.left
         right: parent.right
@@ -27,23 +40,20 @@ Widget {
 
     property int spacing
 
-    color: selected ? styleObject.selected
-                    : mouseOver ? Qt.rgba(0.5, 0.5, 0.5, 0.3) : styleObject.background
+    color: selected ? background_selected
+                    : mouseOver ? background_mouseOver : background
 
     Behavior on color {
         ColorAnimation { duration: 200 }
     }
 
-    height: styleObject.height
-
-    type: "listitem"
     property bool selected: false
 
     property string iconName: ""
     property alias text: label.text
     property alias value: valueLabel.text
     property int fontSize: units.gu(2)
-    property alias iconColor: icon.color
+    //property alias iconColor: icon.color
     property alias font: label.font
 
     Icon {
@@ -52,7 +62,7 @@ Widget {
         width: height
         name: iconName
         size: listItem.fontSize
-        color: listItem.selected ? listItem.styleObject.iconColor_selected : listItem.styleObject.iconColor
+        color: textColor
 
         anchors {
             left: parent.left
@@ -65,9 +75,7 @@ Widget {
         id: label
 
         style: listItem.style
-        customStyle: listItem.customStyle
-        size: listItem.fontSize
-        color: listItem.selected ? listItem.styleObject.textColor_selected : listItem.styleObject.textColor
+        color: textColor
 
         anchors {
             verticalCenter: parent.verticalCenter
@@ -80,10 +88,7 @@ Widget {
     Label {
         id: valueLabel
 
-        style: listItem.style
-        customStyle: listItem.customStyle
-        size: listItem.fontSize
-        color: listItem.selected ? listItem.styleObject.textColor_selected : listItem.styleObject.textColor
+        color: textColor
         width: parent.width * 0.3
         horizontalAlignment: Text.AlignRight
 

@@ -19,15 +19,17 @@ import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Window 2.0
 
-Window {
+Item {
     id: app
+
+    width: units.gu(60)
+    height: units.gu(45)
+
+    property string title
 
     default property alias data: contents.data
 
-    property url stylesheet: Qt.resolvedUrl("stylesheet.json")
-
     property Theme theme: Theme {
-        stylesheet: app.stylesheet
     }
 
     property var units: QtObject {
@@ -38,16 +40,14 @@ Window {
         }
 
         function fontSize(size) {
-            if (size === "xx-large")
-                return gu(4)
-            else if (size === "x-large")
+            if (size === "x-large")
                 return gu(2.4)
             else if (size === "large")
-                return gu(2)
+                return gu(2.2)
             else if (size === "medium")
-                return gu(1.6)
+                return gu(1.9)
             else if (size === "small")
-                return gu(1.2)
+                return gu(1.3)
             else
                 return Number(size)
         }
