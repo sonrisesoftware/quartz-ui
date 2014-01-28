@@ -37,9 +37,13 @@ function dayOfWeekIndex(date) {
 function isToday(date) {
     var today = new Date()
 
-    return date.getFullYear() === today.getFullYear() &&
-            date.getMonth() === today.getMonth() &&
-            date.getDate() === today.getDate()
+    return datesEqual(date, today)
+}
+
+function datesEqual(date1, date2) {
+    return date1.getFullYear() === date2.getFullYear() &&
+            date1.getMonth() === date2.getMonth() &&
+            date1.getDate() === date2.getDate()
 }
 
 function dateIsBefore(date1, date2) {
