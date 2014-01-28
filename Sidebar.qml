@@ -3,9 +3,15 @@ import QtGraphicalEffects 1.0
 
 Widget {
     id: sidebar
-    type: "sidebar"
-    dark: style === "dark"
     clip: true
+
+    //----- STYLE PROPERTIES -----//
+
+    property color background: style === "default" ? "#dce1e8" : "#333"
+    property color borderColor: style === "dark" ? Qt.rgba(0.5,0.5,0.5,0.5) : Qt.rgba(0,0,0,0.2)
+    width: units.gu(20)
+
+    //----- COMPONENT -----//
 
     anchors {
         left: parent.left
@@ -13,8 +19,7 @@ Widget {
         bottom: parent.bottom
     }
 
-    width: styleObject.width
-    color: styleObject.background
+    color: background
 
     Rectangle {
         anchors {
@@ -24,6 +29,6 @@ Widget {
         }
 
         width: 1
-        color: sidebar.dark ? Qt.rgba(0.5,0.5,0.5,0.5) : Qt.rgba(0,0,0,0.2)//"#b8b8b8"
+        color: borderColor
     }
 }

@@ -31,6 +31,8 @@ Rectangle {
     signal clicked(var caller)
     signal rightClicked(var caller)
 
+    default property alias children: mouseArea.data
+
     property alias mouseOver: mouseArea.containsMouse
     property alias pressed: mouseArea.pressed
 
@@ -55,7 +57,7 @@ Rectangle {
         hoverEnabled: true
         acceptedButtons: Qt.LeftButton | Qt.RightButton
 
-        visible: mouseEnabled
+        enabled: mouseEnabled
 
         anchors.fill: parent
 

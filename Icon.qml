@@ -22,7 +22,7 @@ Widget {
     property string name
 
     property alias color: text.color
-    property alias size: text.font.pixelSize
+    property var size
 
     color: "transparent"
 
@@ -33,7 +33,10 @@ Widget {
     property bool shadow: false
 
     property var icons: {
+        "check-circle": "",
+        "check-square-o": "",
         "save": "",
+        "square-o": "",
         "times": "",
         "plus": "",
         "bell-o": "",
@@ -76,6 +79,7 @@ Widget {
         color: widget.enabled ? styleObject.color : styleObject.color_disabled
         style: shadow ? Text.Raised : Text.Normal
         styleColor: Qt.rgba(0,0,0,0.9)
+        font.pixelSize: units.fontSize(widget.size)
 
         Behavior on color {
             ColorAnimation { duration: 200 }

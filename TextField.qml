@@ -86,6 +86,7 @@ Widget {
     RectangularGlow {
         id: glowEffect
 
+        visible: !hidden
         opacity: editing ? 0.3 : 0
 
         Behavior on opacity {
@@ -97,9 +98,12 @@ Widget {
         color: rect.border.color
     }
 
+    property bool hidden: false
+
     Rectangle {
         id: rect
         anchors.fill: parent
+        visible: !hidden
 
         radius: textField.radius
 

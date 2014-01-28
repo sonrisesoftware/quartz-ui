@@ -21,16 +21,21 @@ import QtGraphicalEffects 1.0
 PopupBase {
     id: popover
     width: implicitWidth
-    implicitWidth: styleObject.maxWidth
+    implicitWidth: maxWidth
     height: contents.childrenRect.height + contents.anchors.margins * 2
 
     default property alias data: contents.children
 
-    radius: styleObject.radius
-    border.color: Qt.rgba(0,0,0,0.2)//styleObject.border
+    //----- STYLE PROPERTIES -----//
+
+    property color background: "#fff"
+    property color borderColor: Qt.rgba(0,0,0,0.2)
+    property int maxWidth: units.gu(35)
+    radius: units.gu(0.6)
+
+    border.color: borderColor
     border.width: 0.5
-    //color: "white"
-    color: styleObject.background
+    color: background
 
     property int offset: 0
 
@@ -66,8 +71,8 @@ PopupBase {
     }
 
     Rectangle {
-        border.color: parent.border.color
-        color: parent.color
+        border.color: borderColor
+        color: background
         width: units.gu(2)
         height: width
 
@@ -89,7 +94,7 @@ PopupBase {
         id: contents
         anchors.fill: parent
         anchors.margins: 1
-        color: parent.color
-        radius: parent.radius
+        color: background
+        radius: popover.radius
     }
 }

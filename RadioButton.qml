@@ -20,7 +20,19 @@ import QtQuick 2.0
 Widget {
     id: button
 
-    type: "radiobutton"
+
+    //----- STYLE PROPERTIES -----//
+
+    property color textColor: theme.textColor
+    property color background: "#fff"
+    property color background_mouseOver: Qt.darker(background, 1.1)
+    property color borderColor: Qt.darker(background, 1.4)
+    property color dot: theme.primary
+    property int margin: units.gu(0.75)
+
+    property var fontSize: "medium"
+
+    //
 
     width: label.width + dot.width + label.anchors.leftMargin
     height: label.height
@@ -31,8 +43,8 @@ Widget {
 
     Rectangle {
         id: dot
-        border.color: button.styleObject.border
-        color: mouseOver ? button.styleObject.background_mouseOver : button.styleObject.background
+        border.color: borderColor
+        color: mouseOver ? background_mouseOver : background
 
         Behavior on color {
             ColorAnimation { duration: 200 }
@@ -48,7 +60,7 @@ Widget {
                 ColorAnimation { duration: 200 }
             }
 
-            color: selected ? button.styleObject.dot : "transparent"
+            color: selected ? dot : "transparent"
         }
 
         radius: height/2
@@ -66,7 +78,7 @@ Widget {
         anchors {
             verticalCenter: parent.verticalCenter
             left: dot.right
-            leftMargin: button.styleObject.margin
+            leftMargin: margin
         }
     }
 }

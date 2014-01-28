@@ -88,7 +88,7 @@ Widget {
     }
 
     Rectangle {
-        color: parent.color
+        color: toolTip.color
         width: units.gu(1)
         height: width
 

@@ -34,7 +34,6 @@ Widget {
 
     height: Math.max(column.height + units.gu(1), units.gu(6))
 
-    type: "listitem"
     property bool selected: false
 
     property string iconName: ""
@@ -76,9 +75,6 @@ Widget {
             Label {
                 id: label
 
-                style: listItem.style
-                customStyle: listItem.customStyle
-                size: listItem.fontSize
                 color: listItem.selected ? listItem.styleObject.iconColor_selected : listItem.styleObject.iconColor
                 font.bold: true
                 elide: Text.ElideRight
@@ -93,9 +89,6 @@ Widget {
             Label {
                 id: dateLabel
 
-                style: listItem.style
-                customStyle: listItem.customStyle
-                size: listItem.fontSize
                 color: listItem.selected ? listItem.styleObject.iconColor_selected : listItem.styleObject.iconColor
                 text: date
                 font.italic: true
@@ -107,9 +100,6 @@ Widget {
         Label {
             id: subjectLabel
 
-            style: listItem.style
-            customStyle: listItem.customStyle
-            size: listItem.fontSize
             color: listItem.selected ? listItem.styleObject.iconColor_selected : listItem.styleObject.iconColor
             text: subject
             width: parent.width
