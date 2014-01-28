@@ -23,6 +23,8 @@ Item {
 	
 	clip: true
 	smooth: true
+    visible: orientation === Qt.Vertical ? flickableItem.contentHeight > flickableItem.height
+                                         : flickableItem.contentWidth > flickableItem.width
 
     anchors {
         top: orientation === Qt.Vertical ? flickableItem.top : undefined

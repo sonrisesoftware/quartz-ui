@@ -69,11 +69,13 @@ Widget {
 
     property alias weight: text.font.weight
 
+    FontLoader { id: fontAwesome; source: Qt.resolvedUrl("FontAwesome.otf") }
+
     Text {
         id: text
         anchors.centerIn: parent
 
-        font.family: "FontAwesome"
+        font.family: fontAwesome.name
         font.weight: Font.Light
         text: widget.icons.hasOwnProperty(widget.name) ? widget.icons[widget.name] : ""
         color: widget.enabled ? styleObject.color : styleObject.color_disabled
