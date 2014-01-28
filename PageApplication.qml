@@ -6,6 +6,8 @@ Application {
 
     default property alias data: pageStack.data
 
+    property alias navbarSize: navbar.size
+
     NavigationBar {
         id: navbar
         title: pageStack.currentItem.title

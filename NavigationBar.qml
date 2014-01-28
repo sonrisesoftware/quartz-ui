@@ -35,12 +35,14 @@ Widget {
         }
     }
 
-    height: units.gu(6)
+    height: size == "normal" ? units.gu(6) : units.gu(5)
 
-    property int spacing: units.gu(1)
+    property int spacing: size == "normal" ? units.gu(1) : units.gu(0.5)
     property color titleColor: "#777"
 
     //----- VALUE PROPERTIES -----//
+
+    property string size: "normal" // or "small"
 
     property string title
 
