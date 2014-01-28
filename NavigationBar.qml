@@ -21,21 +21,9 @@ Widget {
 
     //----- STYLE PROPERTIES -----//
 
-    SystemPalette { id: myPalette; colorGroup: app.active ? SystemPalette.Active : SystemPalette.Inactive}
-
     property color borderColor: Qt.rgba(0,0,0,0.2)
-    property color background: myPalette.window
-    gradient: Gradient {
-        GradientStop {
-            position: 0.0
-            color: background
-        }
-
-        GradientStop {
-            position: 1.0
-            color: Qt.darker(background, 1.2)
-        }
-    }
+    property color background: "#eee"
+    color: background
 
     height: size == "normal" ? units.gu(6) : units.gu(5)
 
