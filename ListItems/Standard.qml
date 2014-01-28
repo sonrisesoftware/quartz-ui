@@ -27,6 +27,7 @@ Widget {
     property color background: "transparent"
     property color background_mouseOver: Qt.rgba(0.5,0.5,0.5,0.1)
     property color background_selected: theme.primary
+    property bool trimmed: label.implicitWidth > label.width
 
     height: units.gu(3)
     property int margins: units.gu(1.2)
@@ -77,11 +78,12 @@ Widget {
 
         style: listItem.style
         color: textColor
+        elide: Text.ElideRight
 
         anchors {
             verticalCenter: parent.verticalCenter
             left: iconName === "" ? parent.left : icon.right
-            right: valueLabel.left
+            right: value === "" ? parent.right : valueLabel.left
             margins: margins
         }
     }
@@ -90,7 +92,7 @@ Widget {
         id: valueLabel
 
         color: textColor
-        width: parent.width * 0.3
+        width: Math.min(implicitWidth, parent.width * 0.3)
         horizontalAlignment: Text.AlignRight
 
         anchors {
