@@ -23,7 +23,7 @@ PopupBase {
 
     //----- STYLE PROPERTIES -----//
 
-    property color titleColor: style === "default" ? theme.textColor : theme.getStyleColor(titleColor)
+    property color titleColor: style === "default" ? theme.textColor : theme.getStyleColor(style)
     property color background: "white"
     property int margins: units.gu(2)
     property int spacing: units.gu(1)

@@ -26,4 +26,6 @@ Text {
     color: style === "default" ? theme.textColor : theme.getStyleColor(style)
 
     font.pixelSize: units.fontSize(fontSize)
+
+    linkColor: Qt.darker(theme.primary, 1.2)
 }

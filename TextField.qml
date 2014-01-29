@@ -157,6 +157,7 @@ Widget {
         }
 
         selectionColor: borderColor_focus
+        selectByMouse: true
 
         onAccepted: triggered()
     }
