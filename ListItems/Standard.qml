@@ -18,44 +18,14 @@
 import QtQuick 2.0
 import ".."
 
-Widget {
+BaseListItem {
     id: listItem
 
-    //----- STYLE PROPERTIES -----//
-
-    property color textColor: selected ? "white" : style === "default" ? "#555" : theme.getStyleColor(style)
-    property color background: "transparent"
-    property color background_mouseOver: Qt.rgba(0.5,0.5,0.5,0.1)
-    property color background_selected: theme.primary
     property bool trimmed: label.implicitWidth > label.width
-
-    height: units.gu(3)
-    property int margins: units.gu(1.2)
-
-    //
-
-
-    anchors {
-        left: parent.left
-        right: parent.right
-    }
-
-    property int spacing
-
-    color: selected ? background_selected
-                    : mouseOver ? background_mouseOver : Qt.rgba(0,0,0,0)
-
-    Behavior on color {
-        ColorAnimation { duration: 200 }
-    }
-
-    property bool selected: false
 
     property string iconName: ""
     property alias text: label.text
     property alias value: valueLabel.text
-    property int fontSize: units.gu(2)
-    //property alias iconColor: icon.color
     property alias font: label.font
 
     Icon {
@@ -100,15 +70,5 @@ Widget {
             right: parent.right
             margins: units.gu(1.2)
         }
-    }
-
-    property bool showDivider: true
-
-    Rectangle {
-        anchors.bottom: parent.bottom
-        height: 0.5
-        width: parent.width
-        visible: showDivider
-        color: Qt.rgba(0,0,0,0.2)
     }
 }

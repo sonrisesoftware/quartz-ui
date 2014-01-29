@@ -29,6 +29,7 @@ Rectangle {
     //color: "transparent"
 
     signal clicked(var caller)
+    signal doubleClicked(var caller)
     signal rightClicked(var caller)
 
     default property alias children: mouseArea.data
@@ -60,6 +61,13 @@ Rectangle {
         enabled: mouseEnabled
 
         anchors.fill: parent
+
+        onDoubleClicked: {
+            if (mouse.button == Qt.LeftButton) {
+                widget.forceActiveFocus()
+                widget.doubleClicked(widget)
+            }
+        }
 
         onClicked: {
             if (mouse.button == Qt.LeftButton) {
