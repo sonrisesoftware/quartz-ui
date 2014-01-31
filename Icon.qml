@@ -35,6 +35,7 @@ Widget {
     property var icons: {
         "check-circle": "",
         "check-square-o": "",
+        "ellipse-v": "",
         "save": "",
         "square-o": "",
         "times": "",

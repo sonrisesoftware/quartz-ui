@@ -21,6 +21,8 @@ import "httplib.js" as Http
 Object {
     id: theme
 
+    property string platform: "air"
+
     property color textColor: "#555"
 
     property color primary: "#428bca"
@@ -41,4 +43,9 @@ Object {
         else if (style === "info")
             return info
     }
+
+
+    // Icons
+
+    property var iconSettings: platform === "android" ? "ellipse-v" : "cog"
 }

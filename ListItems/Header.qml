@@ -25,7 +25,7 @@ Widget {
 
     property color textColor: selected ? "white" : "#555"
     property color background: "transparent"
-    height: units.gu(3)
+    height: units.gu(2.7)
     property int margins: units.gu(1)
 
     //

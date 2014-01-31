@@ -114,3 +114,11 @@ function length(model) {
     else
         return model.hasOwnProperty("count") ? model.count : model.length
 }
+
+Array.prototype.move = function (old_index, new_index) {
+    print("Moving from", old_index, "to", new_index)
+    var item1= this[old_index];
+    this[old_index] = this[new_index];
+    this[new_index] = item1;
+    return this; // for testing purposes
+};

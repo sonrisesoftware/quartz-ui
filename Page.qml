@@ -14,6 +14,15 @@ Item {
 
     signal close
 
-    property list<Item> leftWidgets
+    property list<Item> leftWidgets: [
+        Button {
+            iconName: "bars"
+            visible: drawer && drawer.visible
+            selected: drawer.showing
+            onClicked: drawer.toggle(page)
+        }
+
+    ]
     property list<Item> rightWidgets
+    property Drawer drawer
 }

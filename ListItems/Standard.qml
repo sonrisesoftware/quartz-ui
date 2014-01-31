@@ -27,6 +27,7 @@ BaseListItem {
     property alias text: label.text
     property alias value: valueLabel.text
     property alias font: label.font
+    property alias fontSize: label.fontSize
 
     Icon {
         id: icon

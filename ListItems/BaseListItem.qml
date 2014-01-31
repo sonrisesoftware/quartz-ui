@@ -53,6 +53,6 @@ Widget {
         height: 0.5
         width: parent.width
         visible: showDivider
-        color: Qt.rgba(0,0,0,0.2)
+        color: Qt.rgba(0,0,0,0.05)
     }
 }

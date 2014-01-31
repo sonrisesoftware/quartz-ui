@@ -36,7 +36,6 @@ Widget {
 
     height: styleObject.height
 
-    type: "listitem"
     property bool selected: false
 
     property string iconName: ""
@@ -65,8 +64,6 @@ Widget {
         id: label
 
         style: listItem.style
-        customStyle: listItem.customStyle
-        size: listItem.fontSize
         color: listItem.selected ? listItem.styleObject.textColor_selected : listItem.styleObject.textColor
 
         anchors {
@@ -81,8 +78,6 @@ Widget {
         id: valueLabel
 
         style: listItem.style
-        customStyle: listItem.customStyle
-        size: listItem.fontSize
         color: listItem.selected ? listItem.styleObject.textColor_selected : listItem.styleObject.textColor
         width: parent.width * 0.3
         horizontalAlignment: Text.AlignRight
