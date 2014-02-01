@@ -1,16 +1,14 @@
 import QtQuick 2.0
 import QtGraphicalEffects 1.0
 
-Widget {
+Item {
     id: drawer
     anchors.fill: parent
     z:2
 
     default property alias data: contents.data
 
-    color: "transparent"
-
-    opacity: visible ? 1 : 0
+    visible: opacity > 0
 
     Behavior on opacity {
         NumberAnimation { duration: 200 }

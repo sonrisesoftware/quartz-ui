@@ -116,9 +116,12 @@ function length(model) {
 }
 
 Array.prototype.move = function (old_index, new_index) {
-    print("Moving from", old_index, "to", new_index)
-    var item1= this[old_index];
-    this[old_index] = this[new_index];
-    this[new_index] = item1;
+    if (new_index >= this.length) {
+        var k = new_index - this.length;
+        while ((k--) + 1) {
+            this.push(undefined);
+        }
+    }
+    this.splice(new_index, 0, this.splice(old_index, 1)[0]);
     return this; // for testing purposes
 };

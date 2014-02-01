@@ -24,7 +24,7 @@ Widget {
     //----- STYLE PROPERTIES -----//
 
     property color textColor: selected ? "white" : style === "default" ? "#555" : theme.getStyleColor(style)
-    property color background: "transparent"
+    property color background: Qt.rgba(0,0,0,0)
     property color background_mouseOver: Qt.rgba(0.5,0.5,0.5,0.1)
     property color background_selected: theme.primary
     property int fontSize: units.gu(2)

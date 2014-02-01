@@ -24,7 +24,7 @@ Widget {
     //----- STYLE PROPERTIES -----//
 
     property color textColor: selected ? "white" : "#555"
-    property color background: "transparent"
+    property color background: Qt.rgba(0,0,0,0)
     height: units.gu(2.7)
     property int margins: units.gu(1)
 
@@ -47,7 +47,7 @@ Widget {
     property bool selected: false
 
     property alias text: label.text
-    property int fontSize: units.gu(2)
+    property var fontSize: units.gu(2)
     //property alias iconColor: icon.color
     property alias font: label.font
 
@@ -56,6 +56,7 @@ Widget {
 
         style: listItem.style
         color: textColor
+        fontSize: listItem.fontSize
 
         anchors {
             verticalCenter: parent.verticalCenter
