@@ -20,9 +20,9 @@ import QtGraphicalEffects 1.0
 
 PopupBase {
     id: popover
-    width: visible ? implicitWidth : 0
+    width: Math.min(implicitWidth, overlayLayer.width - units.gu(2))
     implicitWidth: maxWidth
-    height: visible ? contents.childrenRect.height + contents.anchors.margins * 2 : 0
+    height: contents.childrenRect.height + contents.anchors.margins * 2
 
     default property alias data: contents.children
 
