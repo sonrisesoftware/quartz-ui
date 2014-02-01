@@ -7,7 +7,7 @@ Widget {
     property bool showing: false
 
     opacity: showing ? 1 : 0
-    visible: opacity > 0
+
     z: 1
 
     signal opened

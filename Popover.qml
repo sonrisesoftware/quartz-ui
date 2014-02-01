@@ -20,9 +20,9 @@ import QtGraphicalEffects 1.0
 
 PopupBase {
     id: popover
-    width: implicitWidth
+    width: visible ? implicitWidth : 0
     implicitWidth: maxWidth
-    height: contents.childrenRect.height + contents.anchors.margins * 2
+    height: visible ? contents.childrenRect.height + contents.anchors.margins * 2 : 0
 
     default property alias data: contents.children
 
@@ -39,9 +39,12 @@ PopupBase {
 
     property int offset: 0
 
+    property Item caller
+
     z: 3
 
     function open(widget) {
+        caller = widget
         popover.parent = overlayLayer
         var position = widget.mapToItem(popover.parent, widget.width/2, widget.height + units.gu(1.5))
         popover.x = position.x - popover.width/2
@@ -58,6 +61,7 @@ PopupBase {
         }
         showing = true
         currentOverlay = popover
+        opened()
     }
 
     RectangularGlow {

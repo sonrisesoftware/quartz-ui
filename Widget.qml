@@ -25,6 +25,7 @@ Rectangle {
 
     property string style: "default"
     property bool mouseEnabled: opacity > 0
+    visible: opacity > 0
 
     //color: "transparent"
 

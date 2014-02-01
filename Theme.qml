@@ -42,6 +42,8 @@ Object {
             return danger
         else if (style === "info")
             return info
+        else
+            return textColor
     }
 
 
