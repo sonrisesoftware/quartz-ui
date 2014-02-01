@@ -43,12 +43,25 @@ PopupBase {
 
     z: 3
 
+    property int side: Qt.AlignBottom
+
     function open(widget) {
         caller = widget
         popover.parent = overlayLayer
-        var position = widget.mapToItem(popover.parent, widget.width/2, widget.height + units.gu(1.5))
+        var position = widget.mapToItem(popover.parent, widget.width/2, widget.height)
         popover.x = position.x - popover.width/2
-        popover.y = position.y
+
+        if (position.y + popover.height + units.gu(2.5) > overlayLayer.height) {
+            side = Qt.AlignTop
+            popover.y = position.y - popover.height - units.gu(1.5) - widget.height
+            if (position.y - popover.height - units.gu(1.5) - widget.height < units.gu(1.5)) {
+                popover.y = units.gu(1.5)
+                side = Qt.AlignVCenter
+            }
+        } else {
+            side = Qt.AlignBottom
+            popover.y = position.y + units.gu(1.5)
+        }
 
         if (popover.x < units.gu(1)) {
             popover.offset = popover.x - units.gu(1)
@@ -79,13 +92,14 @@ PopupBase {
         color: background
         width: units.gu(2)
         height: width
+        visible: side != Qt.AlignVCenter
 
         rotation: 45
 
         anchors {
             horizontalCenter: parent.horizontalCenter
-            verticalCenter: parent.top
-            verticalCenterOffset: 1
+            verticalCenter: side == Qt.AlignBottom ? parent.top : parent.bottom
+            verticalCenterOffset:side == Qt.AlignBottom ? 1 : -1
             horizontalCenterOffset: offset
 
             Behavior on verticalCenterOffset {
