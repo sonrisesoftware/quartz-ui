@@ -17,7 +17,7 @@ Item {
     property list<Item> leftWidgets: [
         Button {
             iconName: "bars"
-            visible: drawer && drawer.visible
+            visible: drawer && drawer.enabled
             selected: drawer.showing
             onClicked: drawer.toggle(page)
         }
