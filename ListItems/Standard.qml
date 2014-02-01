@@ -28,6 +28,7 @@ BaseListItem {
     property alias value: valueLabel.text
     property alias font: label.font
     property alias fontSize: label.fontSize
+    margins: units.gu(1.2)
 
     Icon {
         id: icon

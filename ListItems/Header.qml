@@ -23,9 +23,9 @@ Widget {
 
     //----- STYLE PROPERTIES -----//
 
-    property color textColor: selected ? "white" : "#555"
+    property color textColor: selected ? "white" : "#777"
     property color background: Qt.rgba(0,0,0,0)
-    height: units.gu(2.7)
+    height: units.gu(3.2)
     property int margins: units.gu(1)
 
     //

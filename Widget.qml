@@ -26,6 +26,11 @@ Rectangle {
     property string style: "default"
     property bool mouseEnabled: opacity > 0
     visible: opacity > 0
+    opacity: enabled ? 1 : 0.5
+
+    Behavior on opacity {
+        NumberAnimation { duration: 200 }
+    }
 
     //color: "transparent"
 

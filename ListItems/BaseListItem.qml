@@ -29,8 +29,10 @@ Widget {
     property color background_selected: theme.primary
     property int fontSize: units.gu(2)
     property int margins: units.gu(1.2)
+    clip: true
 
-    height: units.gu(3)
+    implicitHeight: units.gu(3)
+    height: implicitHeight
 
     anchors {
         left: parent.left
