@@ -100,6 +100,16 @@ Window {
         //anchors.centerIn: parent
     }
 
+    onWidthChanged: {
+        if (currentOverlay)
+            currentOverlay.close()
+    }
+
+    onHeightChanged: {
+        if (currentOverlay)
+            currentOverlay.close()
+    }
+
     function getIcon(name) {
         return Qt.resolvedUrl("/Users/mspencer/Developer/ubuntu-themes/ubuntu-mobile/actions/scalable/" + name + ".svg")
     }

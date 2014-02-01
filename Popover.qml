@@ -45,54 +45,34 @@ PopupBase {
 
     property int side: Qt.AlignBottom
 
-    QtObject {
-        id: internalCalculations
-
-        property Item widget
-        property int widgetHeight: widget ? widget.height : 0
-        property int widgetWidth: widget ? widget.width : 0
-        property int screenHeight: widget ? overlayLayer.height : 0
-        property int screenWidth:  widget ?overlayLayer.width : 0
-
-        onWidgetHeightChanged: update()
-        onWidgetWidthChanged: update()
-        onScreenHeightChanged: update()
-        onScreenWidthChanged: update()
-
-        function update() {
-            if (!widget) return
-            var position = widget.mapToItem(popover.parent, widget.width/2, widget.height)
-            popover.x = position.x - popover.width/2
-
-            if (position.y + popover.height + units.gu(2.5) > overlayLayer.height) {
-                side = Qt.AlignTop
-                popover.y = position.y - popover.height - units.gu(1.5) - widget.height
-                if (position.y - popover.height - units.gu(1.5) - widget.height < units.gu(1.5)) {
-                    popover.y = units.gu(1.5)
-                    side = Qt.AlignVCenter
-                }
-            } else {
-                side = Qt.AlignBottom
-                popover.y = position.y + units.gu(1.5)
-            }
-
-            if (popover.x < units.gu(1)) {
-                popover.offset = popover.x - units.gu(1)
-                popover.x = units.gu(1)
-            } else if (popover.x + popover.width > popover.parent.width - units.gu(1)) {
-                popover.offset = popover.x + popover.width - (popover.parent.width - units.gu(1))
-                popover.x = popover.parent.width - units.gu(1) - popover.width
-            } else {
-                popover.offset = 0
-            }
-        }
-    }
-
     function open(widget) {
         caller = widget
         popover.parent = overlayLayer
-        internalCalculations.widget = widget
-        internalCalculations.update()
+
+        var position = widget.mapToItem(popover.parent, widget.width/2, widget.height)
+        popover.x = position.x - popover.width/2
+
+        if (position.y + popover.height + units.gu(2.5) > overlayLayer.height) {
+            side = Qt.AlignTop
+            popover.y = position.y - popover.height - units.gu(1.5) - widget.height
+            if (position.y - popover.height - units.gu(1.5) - widget.height < units.gu(1.5)) {
+                popover.y = units.gu(1.5)
+                side = Qt.AlignVCenter
+            }
+        } else {
+            side = Qt.AlignBottom
+            popover.y = position.y + units.gu(1.5)
+        }
+
+        if (popover.x < units.gu(1)) {
+            popover.offset = popover.x - units.gu(1)
+            popover.x = units.gu(1)
+        } else if (popover.x + popover.width > popover.parent.width - units.gu(1)) {
+            popover.offset = popover.x + popover.width - (popover.parent.width - units.gu(1))
+            popover.x = popover.parent.width - units.gu(1) - popover.width
+        } else {
+            popover.offset = 0
+        }
 
         showing = true
         currentOverlay = popover
