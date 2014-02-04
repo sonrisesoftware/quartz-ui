@@ -5,8 +5,16 @@ Application {
     id: app
 
     default property alias data: pageStack.data
+    property alias background: background.children
 
     property alias navbarSize: navbar.size
+
+    Item {
+        id: background
+        anchors.fill: parent
+    }
+
+    property alias navbarColor: navbar.background
 
     NavigationBar {
         id: navbar

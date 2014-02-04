@@ -109,8 +109,4 @@ Window {
         if (currentOverlay)
             currentOverlay.close()
     }
-
-    function getIcon(name) {
-        return Qt.resolvedUrl("/Users/mspencer/Developer/ubuntu-themes/ubuntu-mobile/actions/scalable/" + name + ".svg")
-    }
 }

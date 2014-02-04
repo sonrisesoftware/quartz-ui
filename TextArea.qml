@@ -35,7 +35,7 @@ Widget {
     height: units.gu(20)
     width: units.gu(30)
 
-    property var fontSize: "medium"
+    property var fontSize: units.gu(1.7)
 
     //
 

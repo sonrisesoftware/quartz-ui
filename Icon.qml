@@ -37,6 +37,7 @@ Widget {
         "check-square-o": "",
         "ellipse-v": "",
         "save": "",
+        "spinner": "",
         "square-o": "",
         "times": "",
         "plus": "",

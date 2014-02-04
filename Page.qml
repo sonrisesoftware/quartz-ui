@@ -18,7 +18,7 @@ Item {
         Button {
             iconName: "bars"
             visible: drawer && drawer.enabled
-            selected: drawer.showing
+            selected: drawer && drawer.showing
             onClicked: drawer.toggle(page)
         }
 
