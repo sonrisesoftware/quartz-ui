@@ -45,6 +45,10 @@ Item {
             width: units.gu(30)
         }
 
+        ScrollBar {
+            flickableItem: messagesList
+        }
+
         Rectangle {
             id: divider
             width: 1
