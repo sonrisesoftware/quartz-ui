@@ -19,7 +19,15 @@ Row {
                 list.push(tabs.pages[i])
         }
 
+        print(list.length)
+
         return list
+    }
+
+    onModelChanged: {
+        if (model.indexOf(tabs.selectedPage) === -1) {
+            tabs.selectedPage = model[0]
+        }
     }
 
     Repeater {
@@ -29,7 +37,7 @@ Row {
         delegate: Widget {
             id: tabItem
             width: (tabbar.width)/repeater.count
-            height: parent.height
+            height: tabbar.height
             onClicked: tabs.selectedPage = modelData
 
             property bool selected: tabs.selectedPage === modelData

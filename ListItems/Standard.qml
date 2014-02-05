@@ -23,6 +23,7 @@ BaseListItem {
 
     property bool trimmed: label.implicitWidth > label.width
 
+    property color valueTextColor: selected ? "white" : style === "default" ? "#555" : theme.getStyleColor(style)
     property string iconName: ""
     property alias text: label.text
     property alias value: valueLabel.text
@@ -63,7 +64,7 @@ BaseListItem {
     Label {
         id: valueLabel
 
-        color: textColor
+        color: valueTextColor
         width: Math.min(implicitWidth, parent.width * 0.3)
         horizontalAlignment: Text.AlignRight
 
