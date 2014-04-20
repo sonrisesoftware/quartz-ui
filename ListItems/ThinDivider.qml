@@ -1,7 +1,7 @@
 import QtQuick 2.0
 
 Rectangle {
-    height: 0.5
+    height: 1
     anchors {
         left: parent.left
         right: parent.right

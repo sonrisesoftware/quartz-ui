@@ -53,5 +53,6 @@ Widget {
     ThinDivider {
         visible: showDivider
         anchors.bottom: parent.bottom
+        color: Qt.rgba(0,0,0,0.05/listItem.opacity)
     }
 }

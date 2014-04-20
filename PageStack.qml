@@ -16,6 +16,7 @@ Item {
             page = newObject(page, args)
             if (page === null)
                 return
+            page.dynamic = true
         }
 
         page.parent = pageStack

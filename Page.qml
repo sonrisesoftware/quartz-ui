@@ -13,6 +13,8 @@ Rectangle {
     property bool closeable
     property bool show: true
 
+    property bool dynamic: false
+
     signal close
 
     property list<Item> leftWidgets: [
@@ -84,7 +86,11 @@ Rectangle {
         }
 
         ScriptAction {
-            script: visible = false
+            script: {
+                visible = false
+                if (dynamic)
+                    page.destroy()
+            }
         }
     }
 

@@ -76,6 +76,9 @@ Widget {
             if (toolTip.x < units.gu(1)) {
                 toolTip.offset = toolTip.x - units.gu(1)
                 toolTip.x = units.gu(1)
+            } else if (toolTip.x + toolTip.width > toolTip.parent.width - units.gu(1)) {
+                toolTip.offset = toolTip.x + toolTip.width - (toolTip.parent.width - units.gu(1))
+                toolTip.x = toolTip.parent.width - units.gu(1) - toolTip.width
             } else {
                 toolTip.offset = 0
             }
