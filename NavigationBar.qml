@@ -34,7 +34,7 @@ Widget {
 
     property string size: "normal" // or "small"
 
-    property string title
+    property string title: currentPage.title
 
     anchors {
         left: parent.left
@@ -73,6 +73,17 @@ Widget {
         anchors.centerIn: parent
     }
 
+    Label {
+        id: titleWidget2
+        color: titleColor
+        fontSize: "x-large"
+
+        text: navbar.title
+        opacity: 0
+
+        anchors.centerIn: parent
+    }
+
     property alias leftWidgets: leftItem.children
 
     Row {
@@ -85,6 +96,7 @@ Widget {
 
         spacing: navbar.spacing
 
+        children: currentPage.leftWidgets
     }
 
     property alias rightWidgets: rightItem.children
@@ -98,5 +110,102 @@ Widget {
         }
 
         spacing: navbar.spacing
+        children: currentPage.rightWidgets
+    }
+
+    property Page currentPage
+    property Page newPage
+
+    function loadInitialPage(page) {
+        currentPage = page
+        titleWidget.anchors.horizontalCenterOffset = 0
+        titleWidget.opacity = 1
+
+        titleWidget2.opacity = 0
+        titleWidget2.anchors.horizontalCenterOffset = units.gu(5)
+    }
+
+    function transitionToPage(page) {
+        titleWidget2.text = page.title
+        newPage = page
+        pushAnimation.restart()
+    }
+
+    function transitionBackToPage(page) {
+        titleWidget2.text = page.title
+        newPage = page
+        popAnimation.restart()
+    }
+
+    ParallelAnimation {
+        id: pushAnimation
+
+        NumberAnimation { target: titleWidget; property: "opacity"; duration: 400; to: 0; easing.type: Easing.InOutQuad }
+        NumberAnimation { target: titleWidget.anchors; property: "horizontalCenterOffset"; duration: 400; from: 0; to: -units.gu(15); easing.type: Easing.InOutQuad }
+
+        NumberAnimation { target: titleWidget2; property: "opacity"; duration: 400; from: 0; to: 1; easing.type: Easing.InOutQuad }
+        NumberAnimation { target: titleWidget2.anchors; property: "horizontalCenterOffset"; duration: 400; from: units.gu(15); to: 0; easing.type: Easing.InOutQuad }
+
+        SequentialAnimation {
+            NumberAnimation {
+                targets: [leftItem, rightItem]; property: "opacity"; duration: 200; to: 0; easing.type: Easing.InOutQuad
+            }
+
+            ScriptAction {
+                script: {
+                    currentPage = newPage
+                }
+            }
+
+            NumberAnimation {
+                targets: [leftItem, rightItem]; property: "opacity"; duration: 200; to: 1; easing.type: Easing.InOutQuad
+            }
+
+            ScriptAction {
+                script: {
+                    titleWidget.anchors.horizontalCenterOffset = 0
+                    titleWidget.opacity = 1
+
+                    titleWidget2.opacity = 0
+                    titleWidget2.anchors.horizontalCenterOffset = units.gu(5)
+                }
+            }
+        }
+    }
+
+    ParallelAnimation {
+        id: popAnimation
+
+        NumberAnimation { target: titleWidget; property: "opacity"; duration: 400; to: 0; easing.type: Easing.InOutQuad }
+        NumberAnimation { target: titleWidget.anchors; property: "horizontalCenterOffset"; duration: 400; from: 0; to: units.gu(15); easing.type: Easing.InOutQuad }
+
+        NumberAnimation { target: titleWidget2; property: "opacity"; duration: 400; from: 0; to: 1; easing.type: Easing.InOutQuad }
+        NumberAnimation { target: titleWidget2.anchors; property: "horizontalCenterOffset"; duration: 400; from: -units.gu(15); to: 0; easing.type: Easing.InOutQuad }
+
+        SequentialAnimation {
+            NumberAnimation {
+                targets: [leftItem, rightItem]; property: "opacity"; duration: 200; to: 0; easing.type: Easing.InOutQuad
+            }
+
+            ScriptAction {
+                script: {
+                    currentPage = newPage
+                }
+            }
+
+            NumberAnimation {
+                targets: [leftItem, rightItem]; property: "opacity"; duration: 200; to: 1; easing.type: Easing.InOutQuad
+            }
+
+            ScriptAction {
+                script: {
+                    titleWidget.anchors.horizontalCenterOffset = 0
+                    titleWidget.opacity = 1
+
+                    titleWidget2.opacity = 0
+                    titleWidget2.anchors.horizontalCenterOffset = units.gu(5)
+                }
+            }
+        }
     }
 }

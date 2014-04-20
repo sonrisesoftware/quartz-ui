@@ -23,10 +23,20 @@ Item {
         stack.push(currentItem)
         stack = stack
         currentItem = page
+
+        if (count > 1) {
+            navbar.transitionToPage(page)
+            page.push()
+        } else {
+            navbar.loadInitialPage(page)
+            page.init()
+        }
     }
 
     function pop() {
+        currentItem.pop()
         currentItem = stack.pop()
         stack = stack
+        navbar.transitionBackToPage(currentItem)
     }
 }

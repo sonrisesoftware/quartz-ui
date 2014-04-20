@@ -18,10 +18,6 @@ Application {
 
     NavigationBar {
         id: navbar
-        title: pageStack.currentItem.title
-
-        leftWidgets: pageStack.currentItem.leftWidgets
-        rightWidgets: pageStack.currentItem.rightWidgets
     }
 
     property alias pageStack: pageStack
@@ -50,5 +46,11 @@ Application {
             top: navbar.bottom
             bottom: parent.bottom
         }
+    }
+
+    property Notification notification: notification
+
+    Notification {
+        id: notification
     }
 }
