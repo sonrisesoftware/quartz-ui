@@ -20,8 +20,13 @@ Item {
             visible: drawer && drawer.enabled
             selected: drawer && drawer.showing
             onClicked: drawer.toggle(page)
-        }
+        },
 
+        Button {
+            iconName: "chevron-left"
+            visible: pageStack.count > 1
+            onClicked: pageStack.pop()
+        }
     ]
     property list<Item> rightWidgets
     property Drawer drawer

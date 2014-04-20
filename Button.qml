@@ -25,7 +25,7 @@ Widget {
 
     property color textColor: style === "default" ? theme.textColor : "white"
     property color background: style === "default" ? "white" : theme.getStyleColor(style)
-    property color background_mouseOver: style == "default" ? Qt.darker(background, 1.1) : Qt.darker(background, 1.15)
+    property color background_mouseOver: hidden ? "white" : style == "default" ? Qt.darker(background, 1.1) : Qt.darker(background, 1.15)
     property color borderColor: Qt.darker(background, 1.4)
     radius: units.gu(0.5)
 

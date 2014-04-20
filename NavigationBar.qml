@@ -23,7 +23,7 @@ Widget {
 
     property color borderColor: Qt.rgba(0,0,0,0.2)
     property color background: "#eee"
-    color: background
+    color: "transparent"
 
     height: size == "normal" ? units.gu(6) : units.gu(5)
 
@@ -40,6 +40,15 @@ Widget {
         left: parent.left
         right: parent.right
         top: parent.top
+    }
+
+    clip: true
+
+    Rectangle {
+        width: parent.width
+        height: parent.height + navbar.radius
+        radius: navbar.radius
+        color: navbar.background
     }
 
     Rectangle {

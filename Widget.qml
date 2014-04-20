@@ -63,6 +63,7 @@ Rectangle {
         id: mouseArea
         hoverEnabled: true
         acceptedButtons: Qt.LeftButton | Qt.RightButton
+        propagateComposedEvents: true
 
         enabled: mouseEnabled
 

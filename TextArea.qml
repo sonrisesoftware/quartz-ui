@@ -154,6 +154,7 @@ Widget {
         font.pixelSize: units.fontSize(fontSize)
 
         selectionColor: borderColor_focus
+        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         selectByMouse: true
     }
 }

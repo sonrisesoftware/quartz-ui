@@ -5,7 +5,7 @@ Page {
     visible: pageStack.currentItem === tabs
 
     property var selectedPage: pages.length > 0 ? pages[0] : null
-    default property alias pages: contents.children
+    default property alias pages: contents.data
     clip: true
 
     TabBar {

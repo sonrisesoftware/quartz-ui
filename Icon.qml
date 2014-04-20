@@ -33,12 +33,15 @@ Widget {
     property bool shadow: false
 
     property var icons: {
+        "envelope-o": "",
+        "grid": "",
         "check-circle": "",
         "check-square-o": "",
         "ellipse-v": "",
         "save": "",
         "spinner": "",
         "square-o": "",
+        "arrow-up": "",
         "times": "",
         "plus": "",
         "bell-o": "",

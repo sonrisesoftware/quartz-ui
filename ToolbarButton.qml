@@ -24,7 +24,6 @@ Widget {
     property bool selected
 
     property bool primary
-    type: "button"
     style: primary ? "primary" : "default"
 
     width: text === "" ? height : Math.max(styleObject.minWidth, row.width + units.gu(1))

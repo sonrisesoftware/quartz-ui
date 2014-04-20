@@ -26,7 +26,7 @@ Widget {
 
     //----- STYLE PROPERTIES -----//
 
-    property color textColor: "#333"
+    property color textColor: theme.textColor
     property color background: "#fafafa"
     property color borderColor: "#ccc"
     property color borderColor_focus: "#66afe9"

@@ -18,8 +18,7 @@
 import QtQuick 2.0
 
 Widget {
-
-    type: "navbar"
+    id: navbar
 
     anchors {
         bottom: parent.bottom
@@ -27,13 +26,21 @@ Widget {
         right: parent.right
     }
 
-    color: styleObject.background
-    height: units.gu(7)
+    property color borderColor: Qt.rgba(0,0,0,0.2)
+    property color background: "#eee"
+    color: background
 
-    property string title
+    height: size == "normal" ? units.gu(6) : units.gu(5)
+
+    property int spacing: size == "normal" ? units.gu(1) : units.gu(0.5)
+    property color titleColor: "#777"
+
+    //----- VALUE PROPERTIES -----//
+
+    property string size: "normal" // or "small"
 
     Rectangle {
-        color: styleObject.border
+        color: borderColor
 
         anchors {
             left: parent.left
@@ -42,5 +49,32 @@ Widget {
         }
 
         height: 1
+    }
+
+    default property alias leftWidgets: leftItem.children
+
+    Row {
+        id: leftItem
+        anchors {
+            left: parent.left
+            leftMargin: navbar.spacing
+            verticalCenter: parent.verticalCenter
+        }
+
+        spacing: navbar.spacing
+
+    }
+
+    property alias rightWidgets: rightItem.children
+
+    Row {
+        id: rightItem
+        anchors {
+            right: parent.right
+            rightMargin: navbar.spacing
+            verticalCenter: parent.verticalCenter
+        }
+
+        spacing: navbar.spacing
     }
 }

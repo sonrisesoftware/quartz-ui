@@ -38,6 +38,7 @@ PopupBase {
     color: background
 
     property int offset: 0
+    property int padding: 0
 
     property Item caller
 
@@ -52,16 +53,16 @@ PopupBase {
         var position = widget.mapToItem(popover.parent, widget.width/2, widget.height)
         popover.x = position.x - popover.width/2
 
-        if (position.y + popover.height + units.gu(2.5) > overlayLayer.height) {
+        if (position.y + popover.height + units.gu(2.5) + padding > overlayLayer.height) {
             side = Qt.AlignTop
-            popover.y = position.y - popover.height - units.gu(1.5) - widget.height
-            if (position.y - popover.height - units.gu(1.5) - widget.height < units.gu(1.5)) {
-                popover.y = units.gu(1.5)
+            popover.y = position.y - popover.height - units.gu(1.5) - padding - widget.height
+            if (position.y - popover.height - units.gu(1.5) - widget.height - padding < units.gu(1.5)) {
+                popover.y = units.gu(1.5) + padding
                 side = Qt.AlignVCenter
             }
         } else {
             side = Qt.AlignBottom
-            popover.y = position.y + units.gu(1.5)
+            popover.y = position.y + units.gu(1.5) + padding
         }
 
         if (popover.x < units.gu(1)) {

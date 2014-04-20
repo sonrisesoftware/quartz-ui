@@ -23,7 +23,7 @@ Widget {
 
     //----- STYLE PROPERTIES -----//
 
-    property color textColor: selected ? "white" : style === "default" ? "#555" : theme.getStyleColor(style)
+    property color textColor: selected ? "white" : style === "default" ? theme.textColor : theme.getStyleColor(style)
     property color background: Qt.rgba(0,0,0,0)
     property color background_mouseOver: Qt.rgba(0.5,0.5,0.5,0.1)
     property color background_selected: theme.primary
@@ -50,11 +50,8 @@ Widget {
 
     property bool showDivider: true
 
-    Rectangle {
-        anchors.bottom: parent.bottom
-        height: 0.5
-        width: parent.width
+    ThinDivider {
         visible: showDivider
-        color: Qt.rgba(0,0,0,0.05)
+        anchors.bottom: parent.bottom
     }
 }

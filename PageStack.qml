@@ -8,12 +8,25 @@ Item {
     property Page currentPage: currentTabs ? currentTabs.selectedPage : currentItem
     property Tabs currentTabs: currentItem && currentItem.hasOwnProperty("selectedPage") ? currentItem : null
 
-    function push(page) {
+    property int count: stack.length
+
+    function push(page, args) {
+        print(typeof(page))
+        if (typeof(page) == "string") {
+            page = newObject(page, args)
+            if (page === null)
+                return
+        }
+
+        page.parent = pageStack
+
         stack.push(currentItem)
+        stack = stack
         currentItem = page
     }
 
     function pop() {
         currentItem = stack.pop()
+        stack = stack
     }
 }

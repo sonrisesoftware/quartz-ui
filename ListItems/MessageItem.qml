@@ -25,8 +25,10 @@ Widget {
         right: parent.right
     }
 
-    color: selected ? styleObject.selected
-                    : mouseOver ? Qt.rgba(0.5, 0.5, 0.5, 0.3) : styleObject.background
+    color: selected ? theme.primary
+                    : mouseOver ? Qt.rgba(0.5, 0.5, 0.5, 0.3) : "transparent"
+
+    property color foregroundColor: listItem.selected ? "white" : theme.textColor
 
     Behavior on color {
         ColorAnimation { duration: 200 }
@@ -49,7 +51,7 @@ Widget {
 
         name: iconName
         size: units.gu(3)
-        color: listItem.selected ? listItem.styleObject.iconColor_selected : listItem.styleObject.iconColor
+        color: foregroundColor
 
         width: height
 
@@ -75,7 +77,7 @@ Widget {
             Label {
                 id: label
 
-                color: listItem.selected ? listItem.styleObject.iconColor_selected : listItem.styleObject.iconColor
+                color: foregroundColor
                 font.bold: true
                 elide: Text.ElideRight
                 anchors {
@@ -89,7 +91,7 @@ Widget {
             Label {
                 id: dateLabel
 
-                color: listItem.selected ? listItem.styleObject.iconColor_selected : listItem.styleObject.iconColor
+                color: foregroundColor
                 text: date
                 font.italic: true
                 anchors.verticalCenter: parent.verticalCenter
@@ -100,7 +102,7 @@ Widget {
         Label {
             id: subjectLabel
 
-            color: listItem.selected ? listItem.styleObject.iconColor_selected : listItem.styleObject.iconColor
+            color: foregroundColor
             text: subject
             width: parent.width
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere

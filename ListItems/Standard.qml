@@ -30,6 +30,7 @@ BaseListItem {
     property alias font: label.font
     property alias fontSize: label.fontSize
     margins: units.gu(1.2)
+    property bool progression: false
 
     Icon {
         id: icon
@@ -41,7 +42,7 @@ BaseListItem {
 
         anchors {
             left: parent.left
-            leftMargin: margins
+            leftMargin: listItem.margins
             verticalCenter: parent.verticalCenter
         }
     }
@@ -57,7 +58,7 @@ BaseListItem {
             verticalCenter: parent.verticalCenter
             left: iconName === "" ? parent.left : icon.right
             right: value === "" ? parent.right : valueLabel.left
-            margins: margins
+            margins: listItem.margins
         }
     }
 
@@ -67,11 +68,12 @@ BaseListItem {
         color: valueTextColor
         width: Math.min(implicitWidth, parent.width * 0.3)
         horizontalAlignment: Text.AlignRight
+        fontSize: label.fontSize
 
         anchors {
             verticalCenter: parent.verticalCenter
             right: parent.right
-            margins: units.gu(1.2)
+            margins: listItem.margins
         }
     }
 }

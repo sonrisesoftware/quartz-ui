@@ -18,13 +18,13 @@
 import QtQuick 2.0
 import QtQuick.Window 2.0
 
-Window {
+Item {
     id: app
 
     width: units.gu(60)
     height: units.gu(45)
 
-    //property string title
+    property string title
 
     default property alias data: contents.data
 

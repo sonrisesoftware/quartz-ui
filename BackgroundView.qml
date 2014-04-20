@@ -24,7 +24,7 @@ Rectangle {
             return Qt.rgba(0,0,0,0.2)
         else {
             var color = Qt.darker(background, 1)  // Used to clone the color
-            color.a = 0.2
+            color.a = 0.4
             return color
         }
     }
