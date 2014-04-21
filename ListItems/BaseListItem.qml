@@ -39,8 +39,10 @@ Widget {
         right: parent.right
     }
 
+    property bool highlightable: true
+
     color: selected ? background_selected
-                    : mouseOver ? background_mouseOver : Qt.rgba(0,0,0,0)
+                    : mouseOver && highlightable ? background_mouseOver : Qt.rgba(0,0,0,0)
 
     Behavior on color {
         ColorAnimation { duration: 200 }

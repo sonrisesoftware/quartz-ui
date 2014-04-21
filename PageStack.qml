@@ -10,6 +10,18 @@ Item {
 
     property int count: stack.length
 
+    function open(page, args) {
+        print(typeof(page))
+        if (typeof(page) == "string") {
+            page = newObject(page, args)
+            if (page === null)
+                return
+            page.dynamic = true
+        }
+
+        page.open()
+    }
+
     function push(page, args) {
         print(typeof(page))
         if (typeof(page) == "string") {

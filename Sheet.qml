@@ -23,6 +23,8 @@ PopupBase {
 
     //----- STYLE PROPERTIES -----//
 
+    property bool confirmButton: true
+
     property color titleColor: style === "default" ? theme.textColor : theme.getStyleColor(style)
     property color background: "white"
     property int margins: units.gu(2)
@@ -34,23 +36,26 @@ PopupBase {
     radius: units.gu(0.7)
 
     property int horizPadding: units.gu(2)
-    property int minHeight: units.gu(25)
-    width: units.gu(45)
+    property int minHeight: units.gu(40)
+    width: units.gu(60)
 
-    //
+    property alias __rightButton: rightButton
+    property alias __leftButton: leftButton
+
+    signal accepted
+    signal rejected
 
     property int maxHeight: sheet.parent.height - units.gu(4)
 
     height: Math.min(
-                Math.max(minHeight, contentHeight + titleBar.height + footer.height + footer.anchors.margins * 2 + divider.height),
+                Math.max(minHeight, contentHeight + titleBar.height + 2 * sheet.margins),
                 maxHeight
             )
     color: "transparent"
     overlayColor: Qt.rgba(0,0,0,0.4)
     z: 2
 
-    property int contentWidth: contents.implicitWidth + contents.anchors.margins * 2
-    property int contentHeight: contents.implicitHeight + contents.anchors.margins * 2
+    property int contentHeight: units.gu(40)
 
     property bool autosize: false
 
@@ -79,8 +84,6 @@ PopupBase {
 
     default property alias data: contents.data
 
-    property alias footer: footer.data
-
     RectangularGlow {
         id: glowEffect
 
@@ -108,35 +111,62 @@ PopupBase {
             right: parent.right
         }
 
+        clip: true
         height: titleLabel.height + 2 * units.gu(1.5)
+
+
+        Rectangle {
+            anchors.fill: parent
+            anchors.bottomMargin: -radius
+            color: "#eee"
+            border.color: borderColor
+            radius: sheet.radius
+        }
 
         Label {
             id: titleLabel
 
             fontSize: titleFontSize
             color: titleColor
-            anchors {
-                right: titleAlignment == Qt.AlignRight ? closeIcon.right : undefined
-                left: titleAlignment == Qt.AlignLeft ? parent.left : undefined
-                horizontalCenter: titleAlignment == Qt.AlignCenter ? parent.horizontalCenter : undefined
-                verticalCenter: parent.verticalCenter
-                margins: units.gu(1.5)
-            }
+            anchors.centerIn: parent
         }
 
-       Button {
-            id: closeIcon
+        Button {
+            id: leftButton
+             anchors {
+                 verticalCenter: parent.verticalCenter
+                 left: parent.left
+                 leftMargin: units.gu(1)
+             }
+
+             text: confirmButton ? "Cancel" : "Done"
+
+             onClicked: {
+                 sheet.close()
+
+                 if (confirmButton)
+                    rejected()
+                 else
+                     accepted()
+             }
+        }
+
+        Button {
+            id: rightButton
             anchors {
                 verticalCenter: parent.verticalCenter
                 right: parent.right
                 rightMargin: units.gu(1)
             }
 
-            iconName: "times"
-            hidden: true
-            //color: mouseOver ? Qt.rgba(0.4,0.4,0.4,1) : Qt.rgba(0.7,0.7,0.7,1)
+            style: "primary"
+            text: "Confirm"
+            visible: confirmButton
 
-            onClicked: sheet.close()
+            onClicked: {
+                sheet.close()
+                accepted()
+            }
         }
 
         Rectangle {
@@ -151,65 +181,16 @@ PopupBase {
         }
     }
 
-    Flickable {
-        id: flickable
-        clip: true
+    Item {
+        id: contents
 
         anchors {
             left: parent.left
             right: parent.right
             top: titleBar.bottom
-            bottom: divider.top
-        }
-
-        contentHeight: item.height
-        contentWidth: flickable.width
-
-        Item {
-            id: item
-            width: flickable.width
-            height: contents.implicitHeight + margins * 2
-            Column {
-                id: contents
-
-                anchors {
-                    fill: parent
-                    margins: sheet.margins
-                }
-
-                spacing: sheet.spacing
-            }
-        }
-    }
-
-    ScrollBar {
-        flickableItem: flickable
-    }
-
-    Rectangle {
-        id: divider
-        height: 1
-        color: borderColor
-
-        anchors {
-            bottom: footer.top
-            left: parent.left
-            right: parent.right
-            bottomMargin: units.gu(1)
-        }
-    }
-
-    Row {
-        id: footer
-        anchors {
-            right: footerAlignment == Qt.AlignRight ? parent.right : undefined
-            left: footerAlignment == Qt.AlignLeft ? parent.left : undefined
-            horizontalCenter: footerAlignment == Qt.AlignCenter ? parent.horizontalCenter : undefined
             bottom: parent.bottom
-            margins: units.gu(1)
+            margins: sheet.margins
         }
-
-        spacing: units.gu(1)
     }
 
     Keys.onEscapePressed: sheet.close()

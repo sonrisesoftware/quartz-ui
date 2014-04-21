@@ -7,6 +7,12 @@ Widget {
     border.color: Qt.rgba(0,0,0,0.2)
     radius: height/2 //units.gu(0.5)
 
+    color: mouseOver ? Qt.rgba(0.95,0.95,0.95,1) : "white"
+
+    Behavior on color {
+        ColorAnimation { duration: 200 }
+    }
+
     property bool checked
 
     onClicked: checked = !checked

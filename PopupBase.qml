@@ -16,6 +16,11 @@ Widget {
         NumberAnimation { duration: 200 }
     }
 
+    onOpacityChanged: {
+        if (opacity === 0 && dynamic)
+            popup.destroy()
+    }
+
     function toggle(widget) {
         if (showing) {
             close()
@@ -25,6 +30,8 @@ Widget {
     }
 
     Component.onCompleted: popup.parent = overlayLayer
+
+    property bool dynamic: false
 
     function open() {
         popup.parent = overlayLayer

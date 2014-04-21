@@ -29,7 +29,7 @@ BaseListItem {
     property alias value: valueLabel.text
     property alias font: label.font
     property alias fontSize: label.fontSize
-    margins: units.gu(1.2)
+    margins: units.gu(2)
     property bool progression: false
 
     Icon {

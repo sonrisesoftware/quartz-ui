@@ -26,7 +26,7 @@ Widget {
 
     //----- STYLE PROPERTIES -----//
 
-    property color textColor: "#333"
+    property color textColor: theme.textColor
     property color background: "#fafafa"
     property color borderColor: "#ccc"
     property color borderColor_focus: "#66afe9"
@@ -37,44 +37,6 @@ Widget {
 
     property var fontSize: units.gu(1.7)
 
-    //
-
-    /*"textfield": {
-            "default": {
-                "background": "#fafafa",
-                "border": "#ccc",
-                "border_focus": "#66afe9",
-                "textColor": "#333",
-                "placeholderColor": "lightgray",
-                "height": "4gu",
-                "width": "30gu",
-                "radius": "0.5gu"
-            },
-            "success": {
-                "textColor": "#468847",
-                "background": "#dff0d8",
-                "border": "$darker @background 1.2",
-                "border_focus": "$darker @background 1.4"
-            },
-            "danger": {
-                "textColor": "#b94a48",
-                "background": "#f2dede",
-                "border": "$darker @background 1.2",
-                "border_focus": "$darker @background 1.4"
-            },
-            "warning": {
-                "textColor": "#c09853",
-                "background": "#fcf8e3",
-                "border": "$darker @background 1.2",
-                "border_focus": "$darker @background 1.4"
-            },
-            "info": {
-                "textColor": "#3a87ad",
-                "background": "#d9edf7",
-                "border": "$darker @background 1.2",
-                "border_focus": "$darker @background 1.4"
-            }
-        },*/
 
     function forceActiveFocus() {
         edit.forceActiveFocus()
@@ -135,9 +97,8 @@ Widget {
 
         anchors {
             left: parent.left
-            leftMargin: units.gu(1)
-            verticalCenter: parent.verticalCenter
-            verticalCenterOffset: units.gu(0.1)
+            top: parent.top
+            margins: units.gu(1)
         }
     }
 
