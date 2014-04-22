@@ -1,8 +1,8 @@
 import QtQuick 2.0
 
 Widget {
-    width: units.gu(6)
-    height: units.gu(3.5)
+    width: units.gu(5.6)
+    height: units.gu(3.3)
 
     border.color: Qt.rgba(0,0,0,0.2)
     radius: height/2 //units.gu(0.5)

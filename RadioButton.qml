@@ -25,24 +25,26 @@ Widget {
 
     property color textColor: theme.textColor
     property color background: "#fff"
-    property color background_mouseOver: Qt.darker(background, 1.1)
-    property color borderColor: Qt.darker(background, 1.4)
+    property color background_mouseOver: Qt.rgba(0.95,0.95,0.95,1)
+    property color borderColor: "gray"
     property color dot: theme.primary
-    property int margin: units.gu(0.75)
+    property int margin: label.text !== "" ? units.gu(0.75) : ""
 
     property var fontSize: "medium"
 
     //
 
-    width: label.width + dot.width + label.anchors.leftMargin
+    width: label.width + dotRect.width + label.anchors.leftMargin
     height: label.height
 
     property bool selected
 
     property alias text: label.text
 
+    onClicked: selected = !selected
+
     Rectangle {
-        id: dot
+        id: dotRect
         border.color: borderColor
         color: mouseOver ? background_mouseOver : background
 

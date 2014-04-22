@@ -4,7 +4,7 @@ Widget {
     id: slider
 
     width: units.gu(20)
-    height: units.gu(3)
+    height: units.gu(2.7)
 
     property int minimumValue
     property int maximumValue
@@ -36,7 +36,12 @@ Widget {
         width: height
         radius: width/2
 
-        color: Qt.rgba(0.95,0.95,0.95,1)
+        color: mouseOver ? Qt.rgba(0.85,0.85,0.85,1) : Qt.rgba(0.95,0.95,0.95,1)
+
+        Behavior on color {
+            ColorAnimation { duration: 200 }
+        }
+
         border.color: "#428bca"//Qt.rgba(0.75,0.75,0.75,1)
 
         anchors {

@@ -39,7 +39,9 @@ Window {
         }
 
         function fontSize(size) {
-            if (size === "x-large")
+            if (size === "xx-large")
+                return gu(2.7)
+            else if (size === "x-large")
                 return gu(2.4)
             else if (size === "large")
                 return gu(2.2)
