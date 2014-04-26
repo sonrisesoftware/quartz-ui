@@ -20,6 +20,7 @@ import QtQuick 2.0
 Widget {
     id: widget
     property string name
+    property bool rotate: widget.name.match(/.*-rotate/) !== null
 
     property alias color: text.color
     property var size
@@ -92,16 +93,26 @@ Widget {
         id: text
         anchors.centerIn: parent
 
+        property string name: widget.name.match(/.*-rotate/) !== null ? widget.name.substring(0, widget.name.length - 7) : widget.name
+
         font.family: fontAwesome.name
         font.weight: Font.Light
-        text: widget.icons.hasOwnProperty(widget.name) ? widget.icons[widget.name] : ""
-        color: widget.enabled ? styleObject.color : styleObject.color_disabled
+        text: widget.icons.hasOwnProperty(name) ? widget.icons[name] : ""
+        color: theme.textColor
         style: shadow ? Text.Raised : Text.Normal
         styleColor: Qt.rgba(0,0,0,0.9)
         font.pixelSize: units.fontSize(widget.size)
 
         Behavior on color {
             ColorAnimation { duration: 200 }
+        }
+
+        NumberAnimation on rotation {
+            running: widget.rotate
+            from: 0
+            to: 360
+            loops: Animation.Infinite
+            duration: 1100
         }
     }
 }

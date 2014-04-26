@@ -23,6 +23,7 @@ Widget {
 
     //----- STYLE PROPERTIES -----//
 
+    property color iconColor: textColor
     property color textColor: style === "default" ? theme.textColor : "white"
     property color background: style === "default" ? "white" : theme.getStyleColor(style)
     property color background_mouseOver: hidden ? "white" : style == "default" ? Qt.darker(background, 1.1) : Qt.darker(background, 1.15)
@@ -76,7 +77,7 @@ Widget {
 
         Icon {
             id: icon
-            color: button.textColor
+            color: button.iconColor
             anchors.verticalCenter: parent.verticalCenter
         }
 

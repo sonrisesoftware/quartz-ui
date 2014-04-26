@@ -122,6 +122,7 @@ PopupBase {
         Label {
             width: parent.width
             text: sheet.text
+            visible: text !== ""
 
             color: textColor
 

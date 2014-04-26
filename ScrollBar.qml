@@ -41,6 +41,8 @@ Item {
 
     property bool moving: flickableItem.moving
 
+    Component.onCompleted: hideAnimation.start()
+
     onMovingChanged: {
         if (moving) {
             hideAnimation.stop()
@@ -75,7 +77,7 @@ Item {
 		id: scrollBar
         color: "black"//theme.foreground
 
-        opacity: 0
+        opacity: 0.3
 		radius: thickness/2
 		
         width: Math.max(orientation == Qt.Horizontal ? end - start : 0, thickness)

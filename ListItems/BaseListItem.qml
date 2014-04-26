@@ -31,7 +31,9 @@ Widget {
     property int margins: units.gu(1.2)
     clip: true
 
-    implicitHeight: units.gu(3)
+    color: "transparent"
+
+    implicitHeight: units.gu(4)
     height: implicitHeight
 
     anchors {
@@ -41,13 +43,6 @@ Widget {
 
     property bool highlightable: true
 
-    color: selected ? background_selected
-                    : mouseOver && highlightable ? background_mouseOver : Qt.rgba(0,0,0,0)
-
-    Behavior on color {
-        ColorAnimation { duration: 200 }
-    }
-
     property bool selected: false
 
     property bool showDivider: true
@@ -56,5 +51,77 @@ Widget {
         visible: showDivider
         anchors.bottom: parent.bottom
         color: Qt.rgba(0,0,0,0.05/listItem.opacity)
+    }
+
+    default property alias contents: content.data
+
+    property alias backgroundIndicator: background.children
+
+    property bool removable
+
+    signal itemRemoved
+
+    Behavior on height {
+        NumberAnimation { duration: 200 }
+    }
+
+    Item {
+        id: background
+        anchors {
+            left: swipingLeft ? content.right : parent.left
+            right: swipingLeft ? parent.right : content.left
+            top: parent.top
+            bottom: parent.bottom
+        }
+    }
+
+    property bool swipingLeft: content.x < 0
+    property string swipingState: swipingLeft ? "SwipingLeft" : "SwipingRight"
+
+    Rectangle {
+        id: content
+        width: parent.width
+        height: parent.height
+
+        onXChanged: {
+            if (x === width) {
+                listItem.height = 0
+            }
+        }
+
+        Behavior on x {
+            NumberAnimation { duration: 200 }
+        }
+
+        color: selected ? background_selected
+                        : mouseOver && highlightable ? background_mouseOver : "transparent"
+
+        Behavior on color {
+            ColorAnimation { duration: 200 }
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            enabled: removable
+            drag.target: content
+            drag.axis: Drag.XAxis
+            drag.minimumX: -listItem.width
+            drag.maximumX: listItem.width
+
+            propagateComposedEvents: true
+
+            drag {
+                onActiveChanged: {
+                    if (!drag.active) {
+                        if (content.x > content.width/2) {
+                            content.x = Qt.binding(function() { return content.width })
+                            itemRemoved()
+                        } else {
+                            content.x = 0
+                        }
+                    }
+                }
+            }
+        }
     }
 }

@@ -32,6 +32,8 @@ BaseListItem {
     margins: units.gu(2)
     property bool progression: false
 
+    clip: true
+
     Icon {
         id: icon
 

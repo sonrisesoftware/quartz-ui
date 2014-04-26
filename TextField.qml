@@ -26,10 +26,10 @@ Widget {
 
     //----- STYLE PROPERTIES -----//
 
-    property color textColor: theme.textColor
-    property color background: "#fafafa"
-    property color borderColor: "#ccc"
-    property color borderColor_focus: "#66afe9"
+    property color textColor: styleObject[style].textColor
+    property color background: styleObject[style].background
+    property color borderColor: style === "default" ? "#ccc" : Qt.darker(background, 1.2)
+    property color borderColor_focus: style === "default" ? "#66afe9" : Qt.darker(background, 1.4)
     radius: units.gu(0.5)
 
     height: units.gu(4)
@@ -39,7 +39,7 @@ Widget {
 
     //
 
-    /*"textfield": {
+    property var styleObject: {
             "default": {
                 "background": "#fafafa",
                 "border": "#ccc",
@@ -74,7 +74,7 @@ Widget {
                 "border": "$darker @background 1.2",
                 "border_focus": "$darker @background 1.4"
             }
-        },*/
+        }
 
     function forceActiveFocus() {
         edit.forceActiveFocus()
@@ -127,6 +127,7 @@ Widget {
     property alias validator: edit.validator
     property alias acceptableInput: edit.acceptableInput
     property bool hiddenEditing: false
+    property alias echoMode: edit.echoMode
 
     Label {
         id: placeholderLabel

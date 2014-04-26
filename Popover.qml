@@ -22,9 +22,11 @@ PopupBase {
     id: popover
     width: Math.min(implicitWidth, overlayLayer.width - units.gu(2))
     implicitWidth: maxWidth
-    height: contents.childrenRect.height + contents.anchors.margins * 2
+    height: contentHeight + contents.anchors.margins * 2
 
-    default property alias data: contents.children
+    property int contentHeight: contents.childrenRect.height
+
+    default property alias data: contents.data
 
     //----- STYLE PROPERTIES -----//
 

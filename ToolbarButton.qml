@@ -26,15 +26,18 @@ Widget {
     property bool primary
     style: primary ? "primary" : "default"
 
-    width: text === "" ? height : Math.max(styleObject.minWidth, row.width + units.gu(1))
-    height: units.gu(6)
+    property color iconColor: textColor
+    property color textColor: style === "default" ? theme.textColor : "white"
 
-    radius: styleObject.radius
+    width: text === "" ? height : row.width + units.gu(1)
+    height: units.gu(5)
+
+    radius: units.gu(0.5)
     property alias text: label.text
     property alias iconName: icon.name
 
-    border.color: mouseOver || pressed ? styleObject.border : "transparent"
-    color: selected || pressed ? styleObject.background_mouseOver : mouseOver ?  styleObject.background : "transparent"
+    border.color: mouseOver || pressed ? Qt.darker("white", 1.4) : "transparent"
+    color: selected || pressed ? Qt.darker("white", 1.1)  : mouseOver ?  "white" : "transparent"
 
     opacity: enabled ? 1 : 0.5
 
@@ -52,7 +55,7 @@ Widget {
 
         Icon {
             id: icon
-            color: button.styleObject.iconColor
+            color: button.iconColor
             anchors.horizontalCenter: parent.horizontalCenter
             size:  units.gu(2.7)
         }
@@ -60,7 +63,7 @@ Widget {
         Label {
             id: label
 
-            color: button.styleObject.textColor
+            color: button.textColor
             fontSize: units.gu(1.4)
             anchors.horizontalCenter: parent.horizontalCenter
 

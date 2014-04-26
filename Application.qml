@@ -21,8 +21,8 @@ import QtQuick.Window 2.0
 Window {
     id: app
 
-    width: units.gu(60)
-    height: units.gu(45)
+    width: units.gu(100)
+    height: units.gu(75)
 
     //property string title
 

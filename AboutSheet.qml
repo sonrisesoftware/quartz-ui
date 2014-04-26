@@ -31,6 +31,7 @@ Sheet {
         visible: landscape
         anchors {
             top: parent.top
+            topMargin: units.gu(2)
             horizontalCenter: parent.horizontalCenter
         }
     }
