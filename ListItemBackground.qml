@@ -31,10 +31,14 @@ Rectangle {
 
     anchors.fill: parent
     //color: Theme.palette.normal.base;
-    anchors.bottomMargin: units.dp(2)
+    anchors.bottomMargin: 1
     color: theme.secondaryColor
     property color iconColor: textColor
-    property color textColor: "white"
+    property color textColor: ready ? actionColor : "white"
+
+    property color actionColor: "white"
+
+    property bool ready: false
 
     Icon {
         id: leftSwipeDeleteIcon
@@ -62,6 +66,10 @@ Rectangle {
             verticalCenter: parent.verticalCenter
             right: parent.right
             rightMargin: units.gu(2)
+        }
+
+        Behavior on color {
+            ColorAnimation { duration: 200 }
         }
 
         fontSize: "large"
@@ -94,6 +102,10 @@ Rectangle {
             verticalCenter: parent.verticalCenter
             left: parent.left
             leftMargin: units.gu(2)
+        }
+
+        Behavior on color {
+            ColorAnimation { duration: 200 }
         }
 
         fontSize: "large"

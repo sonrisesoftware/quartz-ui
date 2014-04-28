@@ -25,6 +25,8 @@ Popover {
                 width: parent.width
                 ListItem.Standard {
                     showDivider: false
+                    height: units.gu(3)
+                    highlightable: true
                     text: modelData.name
                     iconName: modelData.iconName
                     style: modelData.style

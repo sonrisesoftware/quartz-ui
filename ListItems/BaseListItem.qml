@@ -77,6 +77,14 @@ Widget {
 
     property bool swipingLeft: content.x < 0
     property string swipingState: swipingLeft ? "SwipingLeft" : "SwipingRight"
+    property bool swipingReady: content.x > content.width/2 || content.x < -content.width/2
+    property bool removed
+
+    onHeightChanged: {
+        if (removed && height === 0) {
+            itemRemoved()
+        }
+    }
 
     Rectangle {
         id: content
@@ -113,9 +121,9 @@ Widget {
             drag {
                 onActiveChanged: {
                     if (!drag.active) {
-                        if (content.x > content.width/2) {
+                        if (swipingReady) {
                             content.x = Qt.binding(function() { return content.width })
-                            itemRemoved()
+                            removed = true
                         } else {
                             content.x = 0
                         }
