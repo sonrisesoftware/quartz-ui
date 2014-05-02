@@ -24,7 +24,7 @@ Object {
     property string platform: "air"
 
     property color textColor: "#666"
-    property color secondaryColor: "#777"
+    property color secondaryColor: "#888"
 
     property color primary: "#428bca"
     property color success: "#5cb85c"

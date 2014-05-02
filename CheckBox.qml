@@ -8,7 +8,7 @@ Widget {
     property color background_mouseOver: Qt.rgba(0.95,0.95,0.95,1)
     property color borderColor: "gray"
     property color dot: theme.primary
-    property int margin: label.text !== "" ? units.gu(0.75) : ""
+    property int margin: label.text !== "" ? units.gu(0.75) : 0
 
     property var fontSize: "medium"
 
@@ -22,6 +22,7 @@ Widget {
     property alias text: label.text
 
     onClicked: selected = !selected
+    color: "transparent"
 
     Rectangle {
         id: dotRect

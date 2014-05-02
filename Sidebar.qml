@@ -53,7 +53,7 @@ Widget {
             bottom: parent.bottom
             right: mode === "left" ? parent.right : undefined
             left: mode === "right" ? parent.left : undefined
-            rightMargin: -1
+            //rightMargin: -1
         }
     }
 

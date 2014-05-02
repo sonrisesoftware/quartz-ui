@@ -50,7 +50,7 @@ Widget {
     ThinDivider {
         visible: showDivider
         anchors.bottom: parent.bottom
-        color: Qt.rgba(0,0,0,0.05/listItem.opacity)
+        //color: Qt.rgba(0,0,0,0.2/listItem.opacity)
     }
 
     default property alias contents: content.data

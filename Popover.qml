@@ -49,6 +49,9 @@ PopupBase {
     property int side: Qt.AlignBottom
 
     function open(widget) {
+        if (!widget)
+            throw "Caller cannot be undefined!"
+
         caller = widget
         popover.parent = overlayLayer
 

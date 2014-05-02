@@ -68,14 +68,14 @@ BaseListItem {
         id: valueLabel
 
         color: valueTextColor
-        width: Math.min(implicitWidth, parent.width * 0.3)
+        //width: Math.min(implicitWidth, parent.width * 0.3)
         horizontalAlignment: Text.AlignRight
         fontSize: label.fontSize
 
         anchors {
             verticalCenter: parent.verticalCenter
             right: parent.right
-            margins: listItem.margins
+            margins: units.gu(2)//listItem.margins
         }
     }
 }

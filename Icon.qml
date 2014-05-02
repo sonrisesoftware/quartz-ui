@@ -61,6 +61,7 @@ Widget {
         "bell": "",
         "chevron-left": "",
         "chevron-right": "",
+        "chevron-down": "",
         "cog": "",
         "minus": "",
         "dashboard": "",

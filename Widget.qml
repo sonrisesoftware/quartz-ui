@@ -40,8 +40,10 @@ Rectangle {
 
     default property alias children: mouseArea.data
 
-    property alias mouseOver: mouseArea.containsMouse
+    property bool mouseOver: mouseEnabled ? mouseArea.containsMouse : false
     property alias pressed: mouseArea.pressed
+
+    property alias mouseArea: mouseArea
 
     property string toolTip
     property bool instantToolTip

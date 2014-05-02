@@ -68,11 +68,8 @@ Widget {
 
     property bool showDivider: true
 
-    Rectangle {
+    ThinDivider {
         anchors.bottom: parent.bottom
-        height: 0.5
-        width: parent.width
         visible: showDivider
-        color: Qt.rgba(0,0,0,0.2)
     }
 }

@@ -4,8 +4,10 @@ import QtGraphicalEffects 1.0
 Row {
     id: tabbar
     property var tabs
-    height: model.length > 1 ? units.gu(5) : 0
+    height: model.length > 1 ? style === "default" ? units.gu(5) : units.gu(4) : 0
     clip: true
+
+    property string style: "default"
 
     Behavior on height {
         NumberAnimation { duration: 200 }
@@ -42,7 +44,8 @@ Row {
 
             property bool selected: tabs.selectedPage === modelData
 
-            color: selected ? Qt.rgba(0.9,0.9,0.9,0.15) :  Qt.rgba(0.9,0.9,0.9,0.5)
+            color: tabbar.style === "default" ? selected ? Qt.rgba(0.9,0.9,0.9,0.15) :  Qt.rgba(0.9,0.9,0.9,0.5)
+                                              : selected ? theme.primary : "transparent"
 
             Behavior on color {
                 ColorAnimation { duration: 200 }
@@ -58,7 +61,8 @@ Row {
 
                 height: 5
                 color: theme.primary
-                opacity: tabItem.selected ? 1 : 0
+                opacity: style === "default" ? tabItem.selected ? 1 : 0
+                                             : 0
                 Behavior on opacity {
                     NumberAnimation { duration: 200 }
                 }
@@ -106,6 +110,11 @@ Row {
                     anchors.verticalCenter: parent.verticalCenter
                     text: modelData.title
                     fontSize: "large"
+                    color: tabbar.style === "default" ? theme.textColor
+                                                      : selected ? "white" : theme.textColor
+                    Behavior on color {
+                        ColorAnimation { duration: 200 }
+                    }
                 }
 
                 Rectangle {

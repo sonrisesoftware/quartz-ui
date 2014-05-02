@@ -12,7 +12,7 @@ Rectangle {
     height: label.height + units.gu(3)
     width: label.width + units.gu(4.5)
     radius: height/2
-    color: Qt.rgba(0,0,0,0.7)
+    color: Qt.rgba(0,0,0,0.6)
 
     opacity: showing ? 1 : 0
 

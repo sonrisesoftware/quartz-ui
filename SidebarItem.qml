@@ -26,15 +26,19 @@ Widget {
 
     property bool selected: false
 
+    property int anchor: Qt.BottomEdge
+
     color: "transparent"
 
     property string text
     property string iconName
+    property int count
 
     Rectangle {
         anchors {
             fill:parent
-            topMargin: -1
+            topMargin: anchor === Qt.BottomEdge ? -1 : 0
+            bottomMargin: anchor === Qt.TopEdge ? -1 : 0
         }
 
         color: selected ? "#202020" : mouseOver ? "#2a2a2a" : "#333"
@@ -59,7 +63,7 @@ Widget {
         Icon {
             anchors.horizontalCenter: parent.horizontalCenter
             name: sidebarItem.iconName
-            color: selected ? "#ddd" : "#888889"
+            color: selected ? "#eee" : "#aaaaab"
             size: label.visible ? parent.width - units.gu(4) : parent.width - units.gu(3)
             shadow: true
         }
@@ -68,7 +72,7 @@ Widget {
             id: label
             text: sidebarItem.text
             visible: sidebarItem.width >= units.gu(7.5)
-            color: selected ? "#ddd" : "#888889"
+            color: selected ? "#eee" : "#aaaaab"
             font.pixelSize: units.gu(1.6)
             anchors.horizontalCenter: parent.horizontalCenter
             style: Text.Raised
@@ -78,23 +82,26 @@ Widget {
 
     Rectangle {
         width: parent.width
-        anchors.bottom: parent.bottom
+        anchors.bottom: anchor == Qt.BottomEdge ? parent.bottom : undefined
+        anchors.top: anchor == Qt.TopEdge ? parent.top : undefined
         height: 2
         color: Qt.rgba(0,0,0,0.7)
     }
 
     Rectangle {
         width: parent.width
-        anchors.bottom: parent.bottom
+        anchors.bottom: anchor == Qt.BottomEdge ? parent.bottom : undefined
+        anchors.top: anchor == Qt.TopEdge ? parent.top : undefined
+        anchors.topMargin: 1
         height: 1
         color: Qt.rgba(0.5,0.5,0.5,0.5)
     }
 
     Rectangle {
-        width: plugin.count < 10 ? units.gu(2.5) : countLabel.width + units.gu(1.2)
+        width: count < 10 ? units.gu(2.5) : countLabel.width + units.gu(1.2)
         height: units.gu(2.5)
         radius: width
-        opacity: plugin.count === 0 ? 0 : 1
+        opacity: count === 0 ? 0 : 1
 
         Behavior on opacity {
             NumberAnimation { duration: 200 }
@@ -113,7 +120,7 @@ Widget {
             id: countLabel
             color: "white"
             anchors.centerIn: parent
-            text: plugin.count
+            text: count
         }
     }
 }

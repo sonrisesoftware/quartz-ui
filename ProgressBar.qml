@@ -21,7 +21,8 @@ Widget {
         }
 
         height: parent.height - 2 * padding
-        width: (value - minimumValue) / (maximumValue - minimumValue) * (parent.width - 2 * padding)
+        width: Math.max((value - minimumValue) / (maximumValue - minimumValue) * (parent.width - 2 * padding), height)
+        visible: value > 0
         radius: height/2
         color: theme.primary
     }

@@ -7,12 +7,12 @@ Item {
     property alias source: image.source
     property alias status: image.status
 
-    width: image.width
-    height: image.height
+    width: image.implicitWidth
+    height: image.implicitHeight
 
     Image {
         id: image
-        anchors.centerIn: mask
+        anchors.fill: parent
         smooth: true
         visible: false
     }
@@ -20,7 +20,7 @@ Item {
     Image {
         id: mask
         source: Qt.resolvedUrl("circle.png")
-        sourceSize: Qt.size(parent.width, parent.height)
+        anchors.fill: image
         smooth: true
         visible: false
     }

@@ -23,9 +23,14 @@ Item {
     }
 
     function push(page, args) {
-        print(typeof(page))
+        print(typeof(page), page)
         if (typeof(page) == "string") {
             page = newObject(page, args)
+            if (page === null)
+                return
+            page.dynamic = true
+        } else if (String(page).indexOf("QQmlComponent") == 0) {
+            page = page.createObject(mainView, args);
             if (page === null)
                 return
             page.dynamic = true

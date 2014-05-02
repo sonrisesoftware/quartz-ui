@@ -8,6 +8,10 @@ Rectangle {
     property var currentPage: inTabs ? parent.selectedPage : pageStack.currentPage
     visible: inTabs ? currentPage === page : false
 
+    onInTabsChanged: print(parent)
+
+    onParentChanged: print(parent, parent.selectedPage)
+
     property string title
     property int count
     property bool closeable

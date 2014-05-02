@@ -44,7 +44,7 @@ Widget {
                 "background": "#fafafa",
                 "border": "#ccc",
                 "border_focus": "#66afe9",
-                "textColor": "#333",
+                "textColor": theme.textColor,
                 "placeholderColor": "lightgray",
                 "height": "4gu",
                 "width": "30gu",
