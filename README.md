@@ -1,5 +1,5 @@
-QML Air
-=======
+Qix UI
+======
 
 A lightweight and mostly flat UI widget collection for QML
 
