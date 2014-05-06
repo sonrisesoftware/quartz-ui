@@ -27,7 +27,7 @@ PopupBase {
 
     property color titleColor: style === "default" ? theme.textColor : theme.getStyleColor(style)
     property color background: "white"
-    property int margins: units.gu(2)
+    property int margins: units.gu(1)
     property int spacing: units.gu(1)
     property color borderColor: Qt.rgba(0,0,0,0.2)
     property string titleFontSize: "x-large"

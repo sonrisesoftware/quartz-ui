@@ -30,7 +30,7 @@ Widget {
     property color background: "#eee"
     color: background
 
-    height: size == "normal" ? units.gu(6) : units.gu(5)
+    implicitHeight: size == "normal" ? units.gu(6) : units.gu(5)
 
     property int spacing: size == "normal" ? units.gu(1) : units.gu(0.5)
     property color titleColor: "#777"
