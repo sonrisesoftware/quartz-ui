@@ -32,7 +32,7 @@ Rectangle {
         NumberAnimation { duration: 200 }
     }
 
-    //color: "transparent"
+    color: "transparent"
 
     signal clicked(var caller)
     signal doubleClicked(var caller)

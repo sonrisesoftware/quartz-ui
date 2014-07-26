@@ -27,6 +27,7 @@ Widget {
     property color textColor: style === "default" ? theme.textColor : "white"
     property color background: style === "default" ? "white" : theme.getStyleColor(style)
     property color background_mouseOver: hidden ? "white" : style == "default" ? Qt.darker(background, 1.1) : Qt.darker(background, 1.15)
+    property color background_selected: style == "default" ? Qt.darker(background, 1.2) : Qt.darker(background, 1.25)
     property color borderColor: Qt.darker(background, 1.4)
     radius: units.gu(0.5)
 
@@ -49,7 +50,7 @@ Widget {
     property alias iconName: icon.name
 
     border.color: mouseOver || !hidden ? borderColor : "transparent"
-    color: selected || mouseOver ? background_mouseOver : hidden ? Qt.rgba(1,1,1,0) : background
+    color: selected ? background_selected : mouseOver ? background_mouseOver : hidden ? Qt.rgba(1,1,1,0) : background
 
     Behavior on border.color {
         ColorAnimation { duration: 200 }

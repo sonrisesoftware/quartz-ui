@@ -23,7 +23,7 @@ Widget {
 
     //----- STYLE PROPERTIES -----//
 
-    property color textColor: selected ? "white" : "#777"
+    property color textColor: selected ? "white" : "#888"
     property color background: Qt.rgba(0,0,0,0)
     height: units.gu(3.2)
     property int margins: units.gu(1)
@@ -47,7 +47,7 @@ Widget {
     property bool selected: false
 
     property alias text: label.text
-    property var fontSize: units.gu(2)
+    property var fontSize: "small"
     //property alias iconColor: icon.color
     property alias font: label.font
 

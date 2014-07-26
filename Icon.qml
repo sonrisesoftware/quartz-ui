@@ -34,6 +34,7 @@ Widget {
     property bool shadow: false
 
     property var icons: {
+        "shopping-cart": "",
         "envelope-o": "",
         "grid": "",
         "check-circle": "",

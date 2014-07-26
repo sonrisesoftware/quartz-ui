@@ -71,6 +71,7 @@ BaseListItem {
         //width: Math.min(implicitWidth, parent.width * 0.3)
         horizontalAlignment: Text.AlignRight
         fontSize: label.fontSize
+        textFormat: Text.RichText
 
         anchors {
             verticalCenter: parent.verticalCenter

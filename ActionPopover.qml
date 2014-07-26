@@ -40,7 +40,7 @@ Popover {
                     height: visible ? units.gu(2) : 0
                     width: parent.width
                     visible: modelData.hasDividerAfter
-                    Divider {
+                    ListItem.ThinDivider {
                         width: parent.width
                         anchors.verticalCenter: parent.verticalCenter
                     }

@@ -53,6 +53,27 @@ Widget {
         }
     }
 
+    Rectangle {
+        anchors {
+            left: parent.left
+            top: parent.top
+            bottom: parent.bottom
+
+            topMargin: anchor === Qt.BottomEdge ? -1 : 0
+            bottomMargin: anchor === Qt.TopEdge ? -1 : 0
+
+            leftMargin: selected ? 0 : -width
+
+            Behavior on leftMargin {
+                NumberAnimation { duration: 200 }
+            }
+        }
+
+        width: 4
+
+        color: theme.primary
+    }
+
     Column {
         anchors {
             verticalCenter: parent.verticalCenter

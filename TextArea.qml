@@ -88,6 +88,8 @@ Widget {
     property alias placeholderText: placeholderLabel.text
     property bool hiddenEditing: false
 
+    property alias readOnly: edit.readOnly
+
     Label {
         id: placeholderLabel
         opacity: 0.5

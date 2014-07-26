@@ -48,14 +48,14 @@ PopupBase {
 
     property int side: Qt.AlignBottom
 
-    function open(widget) {
+    function openAt(widget, x, y) {
         if (!widget)
             throw "Caller cannot be undefined!"
 
         caller = widget
         popover.parent = overlayLayer
 
-        var position = widget.mapToItem(popover.parent, widget.width/2, widget.height)
+        var position = widget.mapToItem(popover.parent, x, y)
         popover.x = position.x - popover.width/2
 
         if (position.y + popover.height + units.gu(2.5) + padding > overlayLayer.height) {
@@ -83,6 +83,10 @@ PopupBase {
         showing = true
         currentOverlay = popover
         opened()
+    }
+
+    function open(widget) {
+        openAt(widget, widget.width/2, widget.height)
     }
 
     RectangularGlow {

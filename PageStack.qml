@@ -10,16 +10,21 @@ Item {
 
     property int count: stack.length
 
-    function open(page, args) {
+    function open(page, caller, args) {
         print(typeof(page))
         if (typeof(page) == "string") {
             page = newObject(page, args)
             if (page === null)
                 return
             page.dynamic = true
+        } else if (String(page).indexOf("QQmlComponent") == 0) {
+            page = page.createObject(app, args);
+            if (page === null)
+                return
+            page.dynamic = true
         }
 
-        page.open()
+        page.open(caller)
     }
 
     function push(page, args) {
@@ -30,7 +35,7 @@ Item {
                 return
             page.dynamic = true
         } else if (String(page).indexOf("QQmlComponent") == 0) {
-            page = page.createObject(mainView, args);
+            page = page.createObject(app, args);
             if (page === null)
                 return
             page.dynamic = true
