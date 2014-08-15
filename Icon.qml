@@ -34,6 +34,7 @@ Widget {
     property bool shadow: false
 
     property var icons: {
+        "power": "",
         "shopping-cart": "",
         "envelope-o": "",
         "grid": "",
@@ -102,7 +103,7 @@ Widget {
         text: widget.icons.hasOwnProperty(name) ? widget.icons[name] : ""
         color: theme.textColor
         style: shadow ? Text.Raised : Text.Normal
-        styleColor: Qt.rgba(0,0,0,0.9)
+        styleColor: Qt.rgba(0,0,0,0.5)
         font.pixelSize: units.fontSize(widget.size)
 
         Behavior on color {

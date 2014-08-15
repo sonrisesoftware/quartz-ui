@@ -95,6 +95,15 @@ Window {
     }
 
     property ToolTip appToolTip: appToolTip
+    
+    function awesomeIcon(name) {
+        return "<font face=\"FontAwesome\">" + staticIcon.icons[name] + "</font>"
+    }
+    
+    Icon {
+        id: staticIcon
+        visible: false
+    }
 
     ToolTip {
         id: appToolTip

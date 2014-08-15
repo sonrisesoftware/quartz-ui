@@ -16,7 +16,6 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
-import QtQuick.Window 2.0
 
 Item {
     id: app
@@ -90,7 +89,17 @@ Item {
     Item {
         id: overlay
         anchors.fill: parent
+    }    
+    
+    function awesomeIcon(name) {
+        return "<font face=\"FontAwesome\">" + staticIcon.icons[name] + "</font>"
     }
+    
+    Icon {
+        id: staticIcon
+        visible: false
+    }
+
 
     property ToolTip appToolTip: appToolTip
 

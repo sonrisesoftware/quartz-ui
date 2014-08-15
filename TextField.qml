@@ -32,7 +32,7 @@ Widget {
     property color borderColor_focus: style === "default" ? "#66afe9" : Qt.darker(background, 1.4)
     radius: units.gu(0.5)
 
-    height: units.gu(4)
+    height: hidden ? edit.height : units.gu(4)
     width: units.gu(30)
 
     property var fontSize: "medium"
@@ -132,13 +132,13 @@ Widget {
     Label {
         id: placeholderLabel
         opacity: 0.5
-        visible: !edit.focus && textField.text.length === 0
+        visible: textField.text.length === 0
 
         color: textColor
 
         anchors {
             left: parent.left
-            leftMargin: units.gu(1)
+            leftMargin: hidden ? units.gu(0.5) : units.gu(1)
             verticalCenter: parent.verticalCenter
             verticalCenterOffset: units.gu(0.1)
         }
@@ -151,10 +151,9 @@ Widget {
 
         anchors {
             verticalCenter: parent.verticalCenter
-            verticalCenterOffset: units.gu(0.3)
             left: parent.left
             right: parent.right
-            margins: units.gu(1)
+            margins: hidden ? units.gu(0.5) : units.gu(1)
         }
 
         font.pixelSize: units.fontSize(fontSize)
