@@ -59,6 +59,7 @@ Widget {
     Behavior on color {
         ColorAnimation { duration: 200 }
     }
+    border.width: units.gu(0.1)
 
     opacity: enabled ? 1 : 0.5
 
