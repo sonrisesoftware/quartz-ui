@@ -16,6 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
+import QtQuick.Window 2.2
 
 Item {
     id: app
@@ -27,12 +28,21 @@ Item {
 
     property Theme theme: Theme {
     }
-
-    property var units: QtObject {
-        id: units
+    
+    property real scale: Screen.pixelDensity
+        
+    property alias units: __units
+    
+    QtObject {
+        id: __units
+        
+        function dp(units) {
+	    return units * scale * 0.2
+	}
 
         function gu(units) {
-            return units * 8;
+	    print("Scale: ", scale)
+            return dp(units * 8);
         }
 
         function fontSize(size) {
